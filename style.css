@@ -1,0 +1,16 @@
+/*------------------------------------------------------------------/*
+Theme Name: No Rules Web
+Theme URI: http://github.com/jszuslik
+Description: A Responsive WordPress Blog Theme to Start with
+Author URI: https://joshuaszuslik.us
+Author: Joshua Szuslik
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Version: 0.0.1
+Text domain: nrw
+Last change:  01-04-2017
+Tags: blog
+*/
+@media (min-width: 480px) {
+  body {
+    color: black; } }
