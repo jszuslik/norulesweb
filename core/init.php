@@ -11,6 +11,7 @@ if ( function_exists('nrw_require_file') ) {
     nrw_require_file( NRW_CORE_FUNCTIONS . 'customizer/nrw-customizer-settings.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'customizer/nrw-customizer-style.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'nrw-resize-image.php' );
+    nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-menu.php' );
 
     // Load Widgets
     nrw_require_file( NRW_CORE_WIDGETS . 'nrw-about-widget.php' );

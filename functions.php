@@ -77,6 +77,16 @@ function nrw_register_required_plugins() {
             'force_deactivation' 	=> false,
             'version' 				=> ''
         ),
+        array(
+            'name'     				=> 'WooCommerce',
+            'slug'     				=> 'woocommerce',
+            'source'   				=> 'https://downloads.wordpress.org/plugin/woocommerce.2.6.1.zip',
+            'required' 				=> true,
+            'version' 				=> '2.6.1',
+            'force_activation' 		=> false,
+            'force_deactivation' 	=> false,
+            'external_url' 			=> ''
+        ),
         // Install from WordPress.org
         array(
             'name'     				=> '',
@@ -149,4 +159,9 @@ function nrw_blog_config()
 
 
     return $nrw_blog;
+}
+function p($var){
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
 }

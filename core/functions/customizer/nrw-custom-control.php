@@ -48,6 +48,7 @@ if (class_exists('WP_Customize_Control')) {
                     'show_option_none'  => esc_html__( '&mdash; Select &mdash;', NRW_TEXT_DOMAIN ),
                     'option_none_value' => '0',
                     'selected'          => $this->value(),
+                    'taxonomy'          => array('category'),
                 )
             );
  

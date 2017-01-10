@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> itemscope="itemscope" itemtype="https://schema.org/WebPage">
     <div id="wrapper">
         <div class="topbar">
             <div class="container">
@@ -38,3 +38,20 @@
             </div>
         </div>
     </div>
+    <div id="nav-wrapper">
+        <div class="container">
+            <a href="javascript:void(0)" class="toggle-mainmenu"><i class="fa fa-bars"></i></a>
+            <?php
+            wp_nav_menu( array (
+                'container' => false,
+                'theme_location' => 'primary',
+                'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+                'depth' => 10,
+                'walker' => new wp_bootstrap_navwalker(),
+                'menu_class' => 'azmenu',
+                'menu_id' => 'menu-topbar-menu'
+            ) );
+            ?>
+        </div>
+    </div>
+    <div class="container">

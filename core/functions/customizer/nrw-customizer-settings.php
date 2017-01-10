@@ -164,6 +164,34 @@ function nrw_register_theme_customizer( $wp_customize )
         'default' => '',
         'sanatize_callback' => 'nrw_sanatize_default'
     ) );
+    $wp_customize->add_setting( 'nrw_company_info_address_1', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_address_2', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_city', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_state', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_zip', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_phone', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_email', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
     
     // Featured area
 	$wp_customize->add_setting( 'nrw_featured_slider', array(
@@ -419,6 +447,162 @@ function nrw_register_theme_customizer( $wp_customize )
                 'label' => 'Company Name',
                 'section' => 'nrw_new_section_company_info',
                 'settings' => 'nrw_company_info_name',
+                'type' => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_address_1',
+            array(
+                'label' => 'Address',
+                'description' => 'Address 1',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_address_1',
+                'type' => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_address_2',
+            array(
+                'description' => 'Address 2',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_address_2',
+                'type' => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_city',
+            array(
+                'description' => 'City',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_city',
+                'type' => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_state',
+            array(
+                'description' => 'State',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_state',
+                'type' => 'select',
+                'choices' => array(
+                    'AL'=>'ALABAMA',
+                    'AK'=>'ALASKA',
+                    'AS'=>'AMERICAN SAMOA',
+                    'AZ'=>'ARIZONA',
+                    'AR'=>'ARKANSAS',
+                    'CA'=>'CALIFORNIA',
+                    'CO'=>'COLORADO',
+                    'CT'=>'CONNECTICUT',
+                    'DE'=>'DELAWARE',
+                    'DC'=>'DISTRICT OF COLUMBIA',
+                    'FM'=>'FEDERATED STATES OF MICRONESIA',
+                    'FL'=>'FLORIDA',
+                    'GA'=>'GEORGIA',
+                    'GU'=>'GUAM GU',
+                    'HI'=>'HAWAII',
+                    'ID'=>'IDAHO',
+                    'IL'=>'ILLINOIS',
+                    'IN'=>'INDIANA',
+                    'IA'=>'IOWA',
+                    'KS'=>'KANSAS',
+                    'KY'=>'KENTUCKY',
+                    'LA'=>'LOUISIANA',
+                    'ME'=>'MAINE',
+                    'MH'=>'MARSHALL ISLANDS',
+                    'MD'=>'MARYLAND',
+                    'MA'=>'MASSACHUSETTS',
+                    'MI'=>'MICHIGAN',
+                    'MN'=>'MINNESOTA',
+                    'MS'=>'MISSISSIPPI',
+                    'MO'=>'MISSOURI',
+                    'MT'=>'MONTANA',
+                    'NE'=>'NEBRASKA',
+                    'NV'=>'NEVADA',
+                    'NH'=>'NEW HAMPSHIRE',
+                    'NJ'=>'NEW JERSEY',
+                    'NM'=>'NEW MEXICO',
+                    'NY'=>'NEW YORK',
+                    'NC'=>'NORTH CAROLINA',
+                    'ND'=>'NORTH DAKOTA',
+                    'MP'=>'NORTHERN MARIANA ISLANDS',
+                    'OH'=>'OHIO',
+                    'OK'=>'OKLAHOMA',
+                    'OR'=>'OREGON',
+                    'PW'=>'PALAU',
+                    'PA'=>'PENNSYLVANIA',
+                    'PR'=>'PUERTO RICO',
+                    'RI'=>'RHODE ISLAND',
+                    'SC'=>'SOUTH CAROLINA',
+                    'SD'=>'SOUTH DAKOTA',
+                    'TN'=>'TENNESSEE',
+                    'TX'=>'TEXAS',
+                    'UT'=>'UTAH',
+                    'VT'=>'VERMONT',
+                    'VI'=>'VIRGIN ISLANDS',
+                    'VA'=>'VIRGINIA',
+                    'WA'=>'WASHINGTON',
+                    'WV'=>'WEST VIRGINIA',
+                    'WI'=>'WISCONSIN',
+                    'WY'=>'WYOMING',
+                    'AE'=>'ARMED FORCES AFRICA \ CANADA \ EUROPE \ MIDDLE EAST',
+                    'AA'=>'ARMED FORCES AMERICA (EXCEPT CANADA)',
+                    'AP'=>'ARMED FORCES PACIFIC'
+                )
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_zip',
+            array(
+                'description' => 'Zip Code',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_zip',
+                'type' => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_phone',
+            array(
+                'label' => 'Phone Number',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_phone',
+                'type' => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_email',
+            array(
+                'label' => 'E-mail Address',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_email',
                 'type' => 'text'
             )
         )
@@ -822,5 +1006,7 @@ function nrw_register_theme_customizer( $wp_customize )
 	// $wp_customize->remove_section( 'static_front_page');
 	$wp_customize->remove_section( 'colors');
 	$wp_customize->remove_section( 'background_image');
+
 }
 add_action( 'customize_register', 'nrw_register_theme_customizer' );
+
