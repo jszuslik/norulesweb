@@ -40,6 +40,7 @@ class NrwSeoSettingsPage {
                 // This prints out all hidden setting fields
                 settings_fields( 'seo_admin_group' );
                 do_settings_sections( 'seo-setting-admin' );
+                do_settings_sections( 'seo-google-admin');
                 submit_button();
             ?>
             </form>
@@ -69,7 +70,19 @@ class NrwSeoSettingsPage {
             'seo-setting-admin',
             'enable_posts_id'
         );
-        // register_setting('seo_admin_settings_group', 'google_analytics');
+        add_settings_section(
+            'google_analytics_id',
+            'Google Analytics',
+            array($this, 'google_analytics_section_info'),
+            'seo-google-admin'
+        );
+        add_settings_field(
+            'add_google_analytics',
+            'Google Analytics ID',
+            array( $this, 'add_analytics_id_callback'),
+            'seo-google-admin',
+            'google_analytics_id'
+        );
     }
 
     /**
@@ -79,8 +92,11 @@ class NrwSeoSettingsPage {
      */
     public function sanitize( $input ) {
         $new_input = array();
-        if( isset( $input[enable_on_posts_id] ) )
+        if( isset( $input['enable_on_posts_id'] ) )
             $new_input['enable_on_posts_id'] = absint( $input['enable_on_posts_id'] );
+
+        if( isset( $input['add_google_analytics'] ) )
+            $new_input['add_google_analytics'] = sanitize_text_field( $input['add_google_analytics'] );
 
         return $new_input;
     }
@@ -88,20 +104,48 @@ class NrwSeoSettingsPage {
     /**
      * Print the Section text
      */
-    public function print_section_info()
-    {
+    public function print_section_info() {
         print 'Enter your settings below:';
+    }
+
+    public function google_analytics_section_info() {
+        print 'Enter your Google analytics ID';
     }
 
     /**
      * Get the settings option array and print one of its values
      */
     public function enable_on_posts_id_callback() {
+        if(!isset($this->options['enable_on_posts_id'])) {
+            $this->options['enable_on_posts_id'] = 0;
+        }
+        $value = $this->options['enable_on_posts_id'];
         printf(
-            '<input type="checkbox" id="enable_on_posts_id" name="seo_admin_options[enable_on_posts_id]" value="true" />',
-            isset( $this->options['enable_on_posts_id'] ) ? esc_attr( $this->options['enable_on_posts_id']) : ''
+            '<input type="radio" name="seo_admin_options[enable_on_posts_id]" value="1" ' . checked('1', $value, false) . '/>Yes</br>
+            <input type="radio" name="seo_admin_options[enable_on_posts_id]" value="0" ' . checked('0', $value, false) . ' />No'
+        );
+    }
+
+    public function add_analytics_id_callback() {
+        printf(
+            '<input type="text" id="google_analytics" name="seo_admin_options[add_google_analytics]" value="%s" />',
+            isset( $this->options['add_google_analytics'] ) ? esc_attr( $this->options['add_google_analytics']) : ''
         );
     }
 }
 if( is_admin() )
     $my_settings_page = new NrwSeoSettingsPage();
+
+function insert_google_analytics_code($code) {
+    printf('<script>
+                (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+
+                ga("create", "'.$code.'", "auto");
+                ga("send", "pageview");
+
+           </script>'
+    );
+}

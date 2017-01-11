@@ -117,7 +117,7 @@ function nrw_register_required_plugins() {
  */
 function nrw_blog_config()
 {
-    if ( is_home() )
+    if ( is_home() || is_front_page() )
     {
         $nrw_blog_layout       = get_theme_mod('nrw_blog_layout', 'standard');
         $nrw_disable_sidebar   = get_theme_mod('nrw_hompage_disable_sidebar');
@@ -160,6 +160,48 @@ function nrw_blog_config()
 
     return $nrw_blog;
 }
+function nrw_url_encode($title) {
+    $title = html_entity_decode($title);
+    $title = urlencode_deep($title);
+    return $title;
+}
+/** Pagination */
+function nrw_pagination() {
+    global $wp_query;
+    if ( (int)$wp_query->found_posts > (int)get_option('posts_per_page') ) : ?>
+        <div class="natalie-pagination"><?php
+            $args = array(
+                'prev_text' => '<span class="fa fa-angle-left"></span>',
+                'next_text' => '<span class="fa fa-angle-right"></span>'
+            );
+            the_posts_pagination($args);
+            ?>
+        </div>
+        <?php
+    endif;
+}
+
+
+// Custom excerpt max charlength
+function nrw_the_excerpt_max_charlength($charlength) {
+    $excerpt = get_the_excerpt();
+    $charlength++;
+
+    if ( mb_strlen( $excerpt ) > $charlength ) {
+        $subex = mb_substr( $excerpt, 0, $charlength - 5 );
+        $exwords = explode( ' ', $subex );
+        $excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+        if ( $excut < 0 ) {
+            echo mb_substr( $subex, 0, $excut );
+        } else {
+            echo $subex;
+        }
+        echo '&nbsp;...';
+    } else {
+        echo $excerpt;
+    }
+}
+
 function p($var){
     echo '<pre>';
     var_dump($var);

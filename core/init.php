@@ -12,6 +12,9 @@ if ( function_exists('nrw_require_file') ) {
     nrw_require_file( NRW_CORE_FUNCTIONS . 'customizer/nrw-customizer-style.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'nrw-resize-image.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-menu.php' );
+    nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-pages.php' );
+    nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-functions.php' );
+    nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-meta-object.php' );
 
     // Load Widgets
     nrw_require_file( NRW_CORE_WIDGETS . 'nrw-about-widget.php' );
