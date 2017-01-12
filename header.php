@@ -5,6 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="DC.title" content="" />
+    <meta name="geo.region" content="" />
+    <meta name="geo.placename" content="Waukesha" />
+    <meta name="geo.position" content="42.921268;-88.262898" />
+    <meta name="ICBM" content="42.921268, -88.262898" />
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?> itemscope="itemscope" itemtype="https://schema.org/WebPage">

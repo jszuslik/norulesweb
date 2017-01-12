@@ -40,7 +40,7 @@ class NrwSeoSettingsPage {
                 // This prints out all hidden setting fields
                 settings_fields( 'seo_admin_group' );
                 do_settings_sections( 'seo-setting-admin' );
-                do_settings_sections( 'seo-google-admin');
+                // do_settings_sections( 'seo-google-admin');
                 submit_button();
             ?>
             </form>
@@ -74,14 +74,27 @@ class NrwSeoSettingsPage {
             'google_analytics_id',
             'Google Analytics',
             array($this, 'google_analytics_section_info'),
-            'seo-google-admin'
+            'seo-setting-admin'
         );
         add_settings_field(
             'add_google_analytics',
             'Google Analytics ID',
             array( $this, 'add_analytics_id_callback'),
-            'seo-google-admin',
+            'seo-setting-admin',
             'google_analytics_id'
+        );
+        add_settings_section(
+            'meta_geo_section',
+            'Geo Location Settings',
+            array($this, 'geo_location_section_info'),
+            'seo-setting-admin'
+        );
+        add_settings_field(
+            'add_geo_meta_region',
+            'Geo Region',
+            array( $this, 'add_geo_region_meta_tag'),
+            'seo-setting-admin',
+            'meta_geo_section'
         );
     }
 
@@ -98,6 +111,9 @@ class NrwSeoSettingsPage {
         if( isset( $input['add_google_analytics'] ) )
             $new_input['add_google_analytics'] = sanitize_text_field( $input['add_google_analytics'] );
 
+        if( isset( $input['add_geo_meta_region'] ) )
+            $new_input['add_geo_meta_region'] = sanitize_text_field( $input['add_geo_meta_region'] );
+
         return $new_input;
     }
 
@@ -110,6 +126,10 @@ class NrwSeoSettingsPage {
 
     public function google_analytics_section_info() {
         print 'Enter your Google analytics ID';
+    }
+
+    public function geo_location_section_info() {
+        echo 'Get data from the geo location generator at <a href="http://www.geo-tag.de/generator/en.html" target="_blank">http://www.geo-tag.de/generator/en.html</a>';
     }
 
     /**
@@ -132,20 +152,14 @@ class NrwSeoSettingsPage {
             isset( $this->options['add_google_analytics'] ) ? esc_attr( $this->options['add_google_analytics']) : ''
         );
     }
+
+    public function add_geo_region_meta_tag() {
+        printf(
+            '<input type="text" id="add_geo_meta_region" name="seo_admin_options[add_geo_meta_region]" value="%s" />',
+            isset( $this->options['add_geo_meta_region'] ) ? esc_attr( $this->options['add_geo_meta_region']) : ''
+        );
+    }
 }
 if( is_admin() )
     $my_settings_page = new NrwSeoSettingsPage();
 
-function insert_google_analytics_code($code) {
-    printf('<script>
-                (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
-
-                ga("create", "'.$code.'", "auto");
-                ga("send", "pageview");
-
-           </script>'
-    );
-}
