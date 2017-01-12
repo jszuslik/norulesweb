@@ -33,6 +33,14 @@ class NrwSeoPage {
                 'meta_id' => $nrw_seo_stored_meta,
                 'label' => 'SEO Description',
                 'description' => 'SEO Description'
+            ),
+            array(
+                'type' => 'textarea',
+                'name' => 'nrw_seo_structured_data',
+                'id' => 'nrw_seo_structured_data',
+                'meta_id' => $nrw_seo_stored_meta,
+                'label' => 'Structured Data',
+                'description' => 'Enter JSON format of sturctured data'
             )
         );
         NrwSeoFunctions::do_meta_fields($field_array);
@@ -54,6 +62,9 @@ class NrwSeoPage {
         }
         if (isset($_POST['nrw_seo_description'])) {
             update_post_meta( $post_id, 'nrw_seo_description', sanitize_text_field($_POST['nrw_seo_description'] ) );
+        }
+        if (isset($_POST['nrw_seo_structured_data'])) {
+            update_post_meta( $post_id, 'nrw_seo_structured_data', sanitize_text_field($_POST['nrw_seo_structured_data'] ) );
         }
 
     }

@@ -17,13 +17,13 @@ class NrwSeoFunctions {
                 case 'text':
                     $fields .= '<div>';
                     $fields .= '<label>' . $label . '</label>';
-                    $fields .= '<p><input type="' . $type . '" name="' . $name . '" id="' . $id . '" value="' . $value[0] . '" size="150" /></p>';
+                    $fields .= '<p><input type="' . $type . '" name="' . $name . '" id="' . $id . '" value="' . $value[0] . '" style="width: 100%" /></p>';
                     $fields .= '</div>';
                     break;
                 case 'textarea':
                     $fields .= '<div>';
-                    $fields .= '<label>' . $label . '</label>';
-                    $fields .= '<p><textarea name="' . $name . '" id="' . $id . '" rows="4" cols="150">' . $value[0] . '</textarea></p>';
+                    $fields .= '<label>' . $label . '</br><small>' . $description . '</small></label>';
+                    $fields .= '<p><textarea name="' . $name . '" id="' . $id . '" rows="4" style="width:100%">' . $value[0] . '</textarea></p>';
                     $fields .= '</div>';
                     break;
             }
