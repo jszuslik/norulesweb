@@ -1,7 +1,10 @@
 <?php
 class NrwSeoFunctions {
 
-add_action( 'wp_footer', 'add_google_analytics_to_footer', 40 );
+
+    public function __construct() {
+        add_action( 'wp_footer', array($this, 'add_google_analytics_to_footer'), 40 );
+    }
 
     public static function do_meta_fields($field_array) {
         $fields = '';
@@ -50,7 +53,8 @@ add_action( 'wp_footer', 'add_google_analytics_to_footer', 40 );
     public function add_google_analytics_to_footer() {
         $options = get_option('seo_admin_options');
         $ga_code = $options['add_google_analytics'];
-        insert_google_analytics_code($ga_code);
+        $this->insert_google_analytics_code($ga_code);
     }
 
 }
+$nrw_seo_functions = new NrwSeoFunctions();
