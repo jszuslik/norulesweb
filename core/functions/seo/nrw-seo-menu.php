@@ -11,6 +11,7 @@ class NrwSeoSettingsPage {
     public function __construct() {
         add_action('admin_menu', array( $this,'nrw_add_seo_admin_page' ) );
         add_action( 'admin_init', array( $this, 'register_seo_admin_settings' ) );
+        add_action('admin_enqueue_scripts', array($this, 'nrw_seo_structured_data_scripts' ) );
     }
 
     /**
@@ -104,19 +105,33 @@ class NrwSeoSettingsPage {
             'meta_geo_section'
         );
         add_settings_field(
-            'add_geo_meta_longitude',
-            'Longitude',
-            array( $this, 'add_geo_longitude_meta_tag'),
-            'seo-setting-admin',
-            'meta_geo_section'
-        );
-        add_settings_field(
             'add_geo_meta_latitude',
             'Latitude',
             array( $this, 'add_geo_latitude_meta_tag'),
             'seo-setting-admin',
             'meta_geo_section'
         );
+        add_settings_field(
+            'add_geo_meta_longitude',
+            'Longitude',
+            array( $this, 'add_geo_longitude_meta_tag'),
+            'seo-setting-admin',
+            'meta_geo_section'
+        );
+        add_settings_section(
+            'structured_data_section',
+            'Structured Data Settings',
+            array($this, 'structured_data_section_info'),
+            'seo-setting-admin'
+        );
+        add_settings_field(
+            'add_structured_data_form',
+            null,
+            array( $this, 'add_structured_data_meta'),
+            'seo-setting-admin',
+            'structured_data_section'
+        );
+
     }
 
     /**
@@ -144,6 +159,9 @@ class NrwSeoSettingsPage {
         if( isset( $input['add_geo_meta_latitude'] ) )
             $new_input['add_geo_meta_latitude'] = sanitize_text_field( $input['add_geo_meta_latitude'] );
 
+        if( isset( $input['add_structured_data_form'] ) )
+            $new_input['add_structured_data_form'] = sanitize_text_field( $input['add_structured_data_form'] );
+
         return $new_input;
     }
 
@@ -160,6 +178,9 @@ class NrwSeoSettingsPage {
 
     public function geo_location_section_info() {
         echo 'Get data from the geo location generator at <a href="http://www.geo-tag.de/generator/en.html" target="_blank">http://www.geo-tag.de/generator/en.html</a>';
+    }
+    public function structured_data_section_info() {
+        print 'Josh needs to explain structured data here.';
     }
 
     /**
@@ -193,18 +214,29 @@ class NrwSeoSettingsPage {
             isset( $this->options['add_geo_meta_city'] ) ? esc_attr( $this->options['add_geo_meta_city']) : ''
         );
     }
-    public function add_geo_longitude_meta_tag() {
-        printf(
-            '<input type="text" id="add_geo_meta_longitude" name="seo_admin_options[add_geo_meta_longitude]" value="%s"/>',
-            isset( $this->options['add_geo_meta_longitude'] ) ? esc_attr( $this->options['add_geo_meta_longitude']) : ''
-        );
-    }
     public function add_geo_latitude_meta_tag() {
         printf(
             '<input type="text" id="add_geo_meta_latitude" name="seo_admin_options[add_geo_meta_latitude]" value="%s"/>',
             isset( $this->options['add_geo_meta_latitude'] ) ? esc_attr( $this->options['add_geo_meta_latitude']) : ''
         );
     }
+    public function add_geo_longitude_meta_tag() {
+        printf(
+            '<input type="text" id="add_geo_meta_longitude" name="seo_admin_options[add_geo_meta_longitude]" value="%s"/>',
+            isset( $this->options['add_geo_meta_longitude'] ) ? esc_attr( $this->options['add_geo_meta_longitude']) : ''
+        );
+    }
+    public function add_structured_data_meta() {
+        printf(
+            '<input type="hidden" id="add_structured_data_form" name="seo_admin_options[add_structured_data_form]" value="%s" />',
+                isset( $this->options['add_structured_data_form'] ) ? esc_attr( $this->options['add_structured_data_form'] ) : ''
+        );
+    }
+
+    public function nrw_seo_structured_data_scripts() {
+        wp_enqueue_script('nrw_structured_data_scripts', NRW_FUNCTIONS_URI . 'seo/js/nrw-structured-data.js', array('jquery'), false, true);
+    }
+
 }
 if( is_admin() )
     $my_settings_page = new NrwSeoSettingsPage();

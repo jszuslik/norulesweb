@@ -6,8 +6,12 @@ class NrwSeoPage {
      * Start up
      */
     public function __construct() {
-        add_action('add_meta_boxes', array( $this,'nrw_seo_page' ) );
-        add_action('save_post', array($this,'nrw_seo_page_save') );
+        $options = get_option('seo_admin_options');
+        isset( $options['enable_on_posts_id']) ? $is_nrw_page_seo_enabled = esc_attr( $options['enable_on_posts_id'] ) : $is_nrw_page_seo_enabled = '';
+        if($is_nrw_page_seo_enabled == '1'){
+            add_action('add_meta_boxes', array( $this,'nrw_seo_page' ) );
+            add_action('save_post', array($this,'nrw_seo_page_save') );
+        }
     }
 
     public function nrw_seo_page() {
@@ -70,4 +74,5 @@ class NrwSeoPage {
     }
 
 }
-$seo_page = new NrwSeoPage();
+if( is_admin() )
+    $seo_page = new NrwSeoPage();

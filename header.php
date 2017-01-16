@@ -8,7 +8,7 @@
 
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> itemscope="itemscope" itemtype="https://schema.org/WebPage">
+<body <?php body_class(); ?>>
     <div id="wrapper">
         <div class="topbar">
             <div class="container">

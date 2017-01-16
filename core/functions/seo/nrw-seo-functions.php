@@ -51,13 +51,13 @@ class NrwSeoFunctions {
         );
     }
 
-    public function insert_geo_location_meta($title, $region, $city, $longitude, $latitude) {
+    public function insert_geo_location_meta($title, $region, $city, $latitude, $longitude) {
         printf(
             '<meta name="DC.title" content="'.$title.'" />
              <meta name="geo.region" content="'.$region.'" />
              <meta name="geo.placename" content="'.$city.'" />
-             <meta name="geo.position" content="'.$longitude.';'.$latitude.'" />
-             <meta name="ICBM" content="'.$longitude.', '.$latitude.'" />'
+             <meta name="geo.position" content="'.$latitude.';'.$longitude.'" />
+             <meta name="ICBM" content="'.$latitude.', '.$longitude.'" />'
         );
     }
 
@@ -70,12 +70,18 @@ class NrwSeoFunctions {
     public function add_settings_to_header() {
         $title = get_bloginfo();
         $options = get_option('seo_admin_options');
-        $region = $options['add_geo_meta_region'];
-        $city = $options['add_geo_meta_city'];
-        $longitude = $options['add_geo_meta_longitude'];
-        $latitude = $options['add_geo_meta_latitude'];
-        $this->insert_geo_location_meta($title, $region, $city, $longitude, $latitude);
+
+        isset( $options['add_geo_meta_region'] ) ? $region = esc_attr( $options['add_geo_meta_region'] ) : $region = '';
+
+        isset($options['add_geo_meta_city']) ? $city = esc_attr( $options['add_geo_meta_city'] ) : $city = '';
+
+        isset($options['add_geo_meta_latitude']) ? $latitude = esc_attr( $options['add_geo_meta_latitude'] ) : $latitude = '';
+
+        isset($options['add_geo_meta_longitude']) ? $longitude = esc_attr( $options['add_geo_meta_longitude'] ) : $longitude = '';
+
+        $this->insert_geo_location_meta($title, $region, $city, $latitude, $longitude);
     }
 
 }
-$nrw_seo_functions = new NrwSeoFunctions();
+if( is_admin() )
+    $nrw_seo_functions = new NrwSeoFunctions();

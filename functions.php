@@ -3,6 +3,7 @@ define('NRW_LIBS_URI', get_template_directory_uri() . '/libs/');
 define('NRW_CORE_PATH', get_template_directory() . '/core/');
 define('NRW_CORE_URI', get_template_directory_uri() . '/core/');
 define('NRW_ASSETS_URI', get_template_directory_uri() . '/assets/');
+define('NRW_FUNCTIONS_URI', NRW_CORE_URI . '/functions/');
 define('NRW_CORE_CLASSES', NRW_CORE_PATH . 'classes/');
 define('NRW_CORE_FUNCTIONS', NRW_CORE_PATH . 'functions/');
 define('NRW_CORE_WIDGETS', NRW_CORE_PATH . 'widgets/');
