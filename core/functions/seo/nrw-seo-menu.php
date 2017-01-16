@@ -96,6 +96,27 @@ class NrwSeoSettingsPage {
             'seo-setting-admin',
             'meta_geo_section'
         );
+        add_settings_field(
+            'add_geo_meta_city',
+            'City',
+            array( $this, 'add_geo_city_meta_tag'),
+            'seo-setting-admin',
+            'meta_geo_section'
+        );
+        add_settings_field(
+            'add_geo_meta_longitude',
+            'Longitude',
+            array( $this, 'add_geo_longitude_meta_tag'),
+            'seo-setting-admin',
+            'meta_geo_section'
+        );
+        add_settings_field(
+            'add_geo_meta_latitude',
+            'Latitude',
+            array( $this, 'add_geo_latitude_meta_tag'),
+            'seo-setting-admin',
+            'meta_geo_section'
+        );
     }
 
     /**
@@ -113,6 +134,15 @@ class NrwSeoSettingsPage {
 
         if( isset( $input['add_geo_meta_region'] ) )
             $new_input['add_geo_meta_region'] = sanitize_text_field( $input['add_geo_meta_region'] );
+
+        if( isset( $input['add_geo_meta_city'] ) )
+            $new_input['add_geo_meta_city'] = sanitize_text_field( $input['add_geo_meta_city'] );
+
+        if( isset( $input['add_geo_meta_longitude'] ) )
+            $new_input['add_geo_meta_longitude'] = sanitize_text_field( $input['add_geo_meta_longitude'] );
+
+        if( isset( $input['add_geo_meta_latitude'] ) )
+            $new_input['add_geo_meta_latitude'] = sanitize_text_field( $input['add_geo_meta_latitude'] );
 
         return $new_input;
     }
@@ -145,18 +175,34 @@ class NrwSeoSettingsPage {
             <input type="radio" name="seo_admin_options[enable_on_posts_id]" value="0" ' . checked('0', $value, false) . ' />No'
         );
     }
-
     public function add_analytics_id_callback() {
         printf(
             '<input type="text" id="google_analytics" name="seo_admin_options[add_google_analytics]" value="%s" />',
             isset( $this->options['add_google_analytics'] ) ? esc_attr( $this->options['add_google_analytics']) : ''
         );
     }
-
     public function add_geo_region_meta_tag() {
         printf(
             '<input type="text" id="add_geo_meta_region" name="seo_admin_options[add_geo_meta_region]" value="%s" />',
             isset( $this->options['add_geo_meta_region'] ) ? esc_attr( $this->options['add_geo_meta_region']) : ''
+        );
+    }
+    public function add_geo_city_meta_tag() {
+        printf(
+            '<input type="text" id="add_geo_meta_city" name="seo_admin_options[add_geo_meta_city]" value="%s"/>',
+            isset( $this->options['add_geo_meta_city'] ) ? esc_attr( $this->options['add_geo_meta_city']) : ''
+        );
+    }
+    public function add_geo_longitude_meta_tag() {
+        printf(
+            '<input type="text" id="add_geo_meta_longitude" name="seo_admin_options[add_geo_meta_longitude]" value="%s"/>',
+            isset( $this->options['add_geo_meta_longitude'] ) ? esc_attr( $this->options['add_geo_meta_longitude']) : ''
+        );
+    }
+    public function add_geo_latitude_meta_tag() {
+        printf(
+            '<input type="text" id="add_geo_meta_latitude" name="seo_admin_options[add_geo_meta_latitude]" value="%s"/>',
+            isset( $this->options['add_geo_meta_latitude'] ) ? esc_attr( $this->options['add_geo_meta_latitude']) : ''
         );
     }
 }

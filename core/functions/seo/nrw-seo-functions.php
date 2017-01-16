@@ -3,7 +3,8 @@ class NrwSeoFunctions {
 
 
     public function __construct() {
-        add_action( 'wp_footer', array($this, 'add_google_analytics_to_footer'), 40 );
+        add_action( 'wp_footer', array($this, 'add_settings_to_footer'), 40 );
+        add_action( 'wp_head', array($this, 'add_settings_to_header'), 5);
     }
 
     public static function do_meta_fields($field_array) {
@@ -50,10 +51,30 @@ class NrwSeoFunctions {
         );
     }
 
-    public function add_google_analytics_to_footer() {
+    public function insert_geo_location_meta($title, $region, $city, $longitude, $latitude) {
+        printf(
+            '<meta name="DC.title" content="'.$title.'" />
+             <meta name="geo.region" content="'.$region.'" />
+             <meta name="geo.placename" content="'.$city.'" />
+             <meta name="geo.position" content="'.$longitude.';'.$latitude.'" />
+             <meta name="ICBM" content="'.$longitude.', '.$latitude.'" />'
+        );
+    }
+
+    public function add_settings_to_footer() {
         $options = get_option('seo_admin_options');
         $ga_code = $options['add_google_analytics'];
         $this->insert_google_analytics_code($ga_code);
+    }
+
+    public function add_settings_to_header() {
+        $title = get_bloginfo();
+        $options = get_option('seo_admin_options');
+        $region = $options['add_geo_meta_region'];
+        $city = $options['add_geo_meta_city'];
+        $longitude = $options['add_geo_meta_longitude'];
+        $latitude = $options['add_geo_meta_latitude'];
+        $this->insert_geo_location_meta($title, $region, $city, $longitude, $latitude);
     }
 
 }
