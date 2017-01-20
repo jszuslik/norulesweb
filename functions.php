@@ -43,7 +43,8 @@ function nrw_load_scripts() {
     wp_enqueue_style('nrw_theme_style', get_stylesheet_directory_uri() . '/style.css');
 
     //JS
-    wp_enqueue_script('nrw_fitvids', NRW_LIBS_URI . 'fitvids/fitvids.js', array('jquery'), false, true);
+    wp_enqueue_script('nrw_bootstrap_scripts', NRW_LIBS_URI . 'bootstrap/js/bootstrap.min.js', array('jquery'), false, true);
+    wp_enqueue_script('nrw_fitvids', NRW_LIBS_URI . 'fitvids/fitvids.js', array(), false, true);
     wp_enqueue_script('nrw_owl-carousel', NRW_LIBS_URI . 'owl/owl.carousel.min.js', array(), false, true);
     wp_enqueue_script('nrw_masonry', NRW_LIBS_URI . 'masonry/masonry.min.js', array(), false, true);
     wp_enqueue_script('nrw_chosen', NRW_LIBS_URI . 'chosen/chosen.jquery.min.js', array(), false, true);
