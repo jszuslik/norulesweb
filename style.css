@@ -14,3 +14,11 @@ Tags: blog
 @media (min-width: 480px) {
   body {
     color: black; } }
+
+.navbar {
+  background-color: #353535;
+  border: 0;
+  border-radius: 0; }
+
+.navbar-brand {
+  height: auto; }

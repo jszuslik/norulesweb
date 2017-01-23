@@ -39,19 +39,29 @@
             </div>
         </div>
     </div>
-    <div id="nav-wrapper">
+    <div class="navbar navbar-defualt">
         <div class="container">
-            <a href="javascript:void(0)" class="toggle-mainmenu"><i class="fa fa-bars"></i></a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- PUT IN LOGO CODE HERE -->
+                <?php nrw_logo(); ?>
+            </div>
             <?php
             wp_nav_menu( array (
-                'container' => false,
-                'theme_location' => 'primary',
-                'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-                'depth' => 10,
-                'walker' => new wp_bootstrap_navwalker(),
-                'menu_class' => 'azmenu',
-                'menu_id' => 'menu-topbar-menu'
-            ) );
+                    'menu' => 'primary',
+                    'theme_location' => 'primary',
+                    'depth' => 2,
+                    'container' => 'div',
+                    'container_class' => 'navbar-collapse collapse navbar-responsive-collapse',
+                    'container_id' => 'mobile-collapse',
+                    'menu_class' => 'nav navbar-nav navbar-right',
+                    'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+                    'walker' => new wp_bootstrap_navwalker())
+            );
             ?>
         </div>
     </div>

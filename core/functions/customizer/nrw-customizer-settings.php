@@ -272,11 +272,35 @@ function nrw_register_theme_customizer( $wp_customize )
         'default'           => '',
         'sanitize_callback' => 'nrw_sanitize_default'
     ) );
-    // Accent
-    $wp_customize->add_setting( 'nrw_accent_color', array(
-        'default'           => '#f37e7e',
+    // Colors
+    $wp_customize->add_setting( 'nrw_primary_accent_color', array(
+        'default'           => '',
         'sanitize_callback' => 'nrw_sanitize_default'
-    ) );    
+    ) );
+    $wp_customize->add_setting( 'nrw_secondary_accent_color', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_header_background_color', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_header_accent_color', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_header_menu_color', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_footer_background_color', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_footer_font_color', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
     // Footer
     $wp_customize->add_setting( 'nrw_footer_disable_social', array(
         'default'           => '',
@@ -303,7 +327,7 @@ function nrw_register_theme_customizer( $wp_customize )
 			$wp_customize,
 			'upload_logo',
 			array(
-				'label'      => 'Upload logo top',
+				'label'      => 'Upload logo',
 				'section'    => 'nrw_new_section_header',
 				'settings'   => 'nrw_logo',
 				'priority'	 => 1
@@ -958,19 +982,91 @@ function nrw_register_theme_customizer( $wp_customize )
 			)
 		)
 	);
-	// Accent
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'accent_color',
-			array(
-				'label'      => 'Accent Color',
-				'section'    => 'nrw_new_section_color_accent',
-				'settings'   => 'nrw_accent_color',
-				'priority'	 => 1
-			)
-		)
-	);
+	// Colors
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'primary_accent_color',
+            array(
+                'label'      => 'Primary Accent Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_primary_accent_color',
+                'priority'	 => 1
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'secondary_accent_color',
+            array(
+                'label'      => 'Secondary Accent Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_secondary_accent_color',
+                'priority'	 => 2
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'header_background_color',
+            array(
+                'label'      => 'Header Background Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_header_background_color',
+                'priority'	 => 3
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'header_accent_color',
+            array(
+                'label'      => 'Header Accent Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_header_accent_color',
+                'priority'	 => 4
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'header_menu_color',
+            array(
+                'label'      => 'Header Menu Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_header_menu_color',
+                'priority'	 => 5
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'footer_background_color',
+            array(
+                'label'      => 'Footer Background Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_footer_background_color',
+                'priority'	 => 6
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'footer_font_color',
+            array(
+                'label'      => 'Footer Accent Color',
+                'section'    => 'nrw_new_section_color_accent',
+                'settings'   => 'nrw_footer_font_color',
+                'priority'	 => 7
+            )
+        )
+    );
     // Footer
     $wp_customize->add_control(
 		new WP_Customize_Control(
