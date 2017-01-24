@@ -160,7 +160,15 @@ function nrw_register_theme_customizer( $wp_customize )
     ) );
 
     // Company Info
-    $wp_customize->add_setting( 'nrw_company_info_name', array(
+    $wp_customize->add_setting( 'nrw_company_info_name_1', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_name_2', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_name_3', array(
         'default' => '',
         'sanatize_callback' => 'nrw_sanatize_default'
     ) );
@@ -181,6 +189,14 @@ function nrw_register_theme_customizer( $wp_customize )
         'sanatize_callback' => 'nrw_sanatize_default'
     ) );
     $wp_customize->add_setting( 'nrw_company_info_zip', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_latitude', array(
+        'default' => '',
+        'sanatize_callback' => 'nrw_sanatize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_company_info_longitude', array(
         'default' => '',
         'sanatize_callback' => 'nrw_sanatize_default'
     ) );
@@ -466,11 +482,33 @@ function nrw_register_theme_customizer( $wp_customize )
     $wp_customize->add_control(
         new WP_Customize_Control(
             $wp_customize,
-            'nrw_company_info_name',
+            'nrw_company_info_name_1',
             array(
                 'label' => 'Company Name',
                 'section' => 'nrw_new_section_company_info',
-                'settings' => 'nrw_company_info_name',
+                'settings' => 'nrw_company_info_name_1',
+                'type' => 'text'
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_name_2',
+            array(
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_name_2',
+                'type' => 'text'
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_name',
+            array(
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_name_3',
                 'type' => 'text'
             )
         )
@@ -601,6 +639,30 @@ function nrw_register_theme_customizer( $wp_customize )
                 'description' => 'Zip Code',
                 'section' => 'nrw_new_section_company_info',
                 'settings' => 'nrw_company_info_zip',
+                'type' => 'text'
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_latitude',
+            array(
+                'description' => 'Latitude',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_latitude',
+                'type' => 'text'
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'nrw_company_info_longitude',
+            array(
+                'description' => 'Longitude',
+                'section' => 'nrw_new_section_company_info',
+                'settings' => 'nrw_company_info_longitude',
                 'type' => 'text'
             )
         )
