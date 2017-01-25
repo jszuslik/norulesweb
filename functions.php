@@ -249,3 +249,12 @@ function nrw_logo() {
         echo '<a class="navbar-brand" href="/"><h1></h1></a>';
     endif;
 }
+add_filter( 'nav_menu_css_class', 'special_nav_class', 10, 3 );
+function special_nav_class( $classes, $item, $args ) {
+    if ( 'primary' === $args->theme_location ) {
+        unset($classes);
+        $classes[] = 'nav__item';
+    }
+
+    return $classes;
+}

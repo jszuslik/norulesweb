@@ -42,27 +42,32 @@
     <div class="navbar navbar-defualt">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- PUT IN LOGO CODE HERE -->
+<!--                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
+<!--                    <span class="icon-bar"></span>-->
+<!--                    <span class="icon-bar"></span>-->
+<!--                    <span class="icon-bar"></span>-->
+<!--                </button>-->
+<!--                <!-- PUT IN LOGO CODE HERE -->
                 <?php nrw_logo(); ?>
             </div>
+            <nav class="nav">
+                <input type="checkbox" class="nav__cb" id="menu-cb"/>
             <?php
             wp_nav_menu( array (
                     'menu' => 'primary',
                     'theme_location' => 'primary',
                     'depth' => 2,
                     'container' => 'div',
-                    'container_class' => 'navbar-collapse collapse navbar-responsive-collapse',
-                    'container_id' => 'mobile-collapse',
-                    'menu_class' => 'nav navbar-nav navbar-right',
+                    'container_class' => 'nav__content',
+                    'menu_class' => 'nav__items',
+                    'before' => '<span class="nav__item-text">',
+                    'after' => '</span>',
                     'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
                     'walker' => new wp_bootstrap_navwalker())
             );
             ?>
+                <label class="nav__btn" for="menu-cb"></label>
+            </nav>
         </div>
     </div>
     <div class="container">
