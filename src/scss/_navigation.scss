@@ -1,10 +1,13 @@
+.navbar .container {
+  position: relative;
+}
 .nav {
   overflow: hidden;
   position: absolute;
-  right: 18%;
+  right: 0;
   top: 50%;
   width: auto;
-  height: 90px;
+  height: 60px;
   margin-top: -45px;
   background: #fff;
   border-radius: 5px;
@@ -22,7 +25,7 @@
 }
 .nav__content {
   position: relative;
-  width: 90px;
+  width: 60px;
   height: 100%;
   -webkit-transition: width 1s cubic-bezier(0.49, -0.3, 0.68, 1.23);
   transition: width 1s cubic-bezier(0.49, -0.3, 0.68, 1.23);
@@ -48,7 +51,7 @@
   text-align: center;
   color: #6C7784;
   font-size: 14px;
-  line-height: 90px;
+  line-height: 60px;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   -webkit-perspective: 1000px;
@@ -116,9 +119,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 90px;
-  height: 90px;
-  padding: 36px 31px;
+  width: 60px;
+  height: 60px;
+  padding: 23px 17px;
   cursor: pointer;
 }
 .nav__btn:before, .nav__btn:after {
