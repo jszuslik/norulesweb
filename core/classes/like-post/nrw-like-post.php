@@ -8,7 +8,7 @@ class Nrw_Like_Post {
     }
 
     function enqueue_scripts() {
-        wp_enqueue_script( 'nrw-like-post', NRW_CORE_CLASSES . 'like-post/js/nrw-like-post.js', 'jquery', '1.0', true );
+        wp_enqueue_script( 'nrw-like-post', NRW_CLASSES_URI . 'like-post/js/nrw-like-post.js', 'jquery', '1.0', true );
         wp_localize_script( 'nrw-like-post', 'NrwLike', array(
             'ajaxurl' => admin_url('admin-ajax.php')
         ));

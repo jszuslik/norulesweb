@@ -11,17 +11,5 @@ Text domain: nrwwpthemestart
 Last change:  01-04-2017
 Tags: blog
 */
-@media (min-width: 480px) {
-  body {
-    color: black; } }
 
-.topbar {
-  background-color: #4c4c4c; }
-
-.navbar {
-  background-color: #353535;
-  border: 0;
-  border-radius: 0; }
-
-.navbar-brand {
-  height: auto; }
+/* DO NOT PUT ANYTHING HERE */

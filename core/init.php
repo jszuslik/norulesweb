@@ -7,6 +7,7 @@ if ( function_exists('nrw_require_file') ) {
     nrw_require_file( NRW_CORE_CLASSES . 'like-post/nrw-like-post.php' );
 
     // Load Functions
+    nrw_require_file( NRW_CORE_FUNCTIONS . 'scripts/nrw_scripts.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'customizer/nrw-custom-control.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'customizer/nrw-customizer-settings.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'customizer/nrw-customizer-style.php' );

@@ -227,7 +227,11 @@ function nrw_register_theme_customizer( $wp_customize )
         'sanitize_callback' => 'nrw_sanitize_default'
     ) );
     // Header and Logo
-    $wp_customize->add_setting( 'nrw_logo', array(
+    $wp_customize->add_setting( 'nrw_lght_logo', array(
+        'default'           => '',
+        'sanitize_callback' => 'nrw_sanitize_default'
+    ) );
+    $wp_customize->add_setting( 'nrw_drk_logo', array(
         'default'           => '',
         'sanitize_callback' => 'nrw_sanitize_default'
     ) );
@@ -341,15 +345,27 @@ function nrw_register_theme_customizer( $wp_customize )
     $wp_customize->add_control(
 		new WP_Customize_Image_Control(
 			$wp_customize,
-			'upload_logo',
+			'upload_lght_logo',
 			array(
 				'label'      => 'Upload logo',
 				'section'    => 'nrw_new_section_header',
-				'settings'   => 'nrw_logo',
+				'settings'   => 'nrw_lght_logo',
 				'priority'	 => 1
 			)
 		)
 	);
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'upload_drk_logo',
+            array(
+                'label'      => 'Upload logo',
+                'section'    => 'nrw_new_section_header',
+                'settings'   => 'nrw_drk_logo',
+                'priority'	 => 2
+            )
+        )
+    );
     
     /** PromoBox */
     $wp_customize->add_control(

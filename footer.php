@@ -1,4 +1,4 @@
-</div>
+
 <?php
 $name_string = '';
 $latitude = '';
