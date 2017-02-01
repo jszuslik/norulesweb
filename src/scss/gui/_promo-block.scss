@@ -9,7 +9,7 @@
 	@include before {
 		@include position(absolute, $top: -5rem, $left: -1.875rem);
 		@include size(18.75rem, 10.9375rem);
-		border: .625rem solid;
+		border: 1px solid;
 		border-color: rgba($color-white, .2);
 		content: " ";
 	}
@@ -17,7 +17,7 @@
 	@include after {
 		@include position(absolute, $bottom: -2rem, $right: 0);
 		@include size(9.375rem);
-		border: .625rem solid;
+		border: 1px solid;
 		z-index: -1;
 		border-color: rgba(#6cb8ed, .9);
 		content: " ";

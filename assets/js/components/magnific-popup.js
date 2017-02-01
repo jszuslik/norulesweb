@@ -5,8 +5,8 @@ var MagnificPopup = function() {
   // Handle Magnific Popup
   var handleMagnificPopup = function() {
     // Image popup - vertical fit
-    $(document).ready(function() {
-      $('.js__popup__image').magnificPopup({
+    jQuery(document).ready(function() {
+      jQuery('.js__popup__image').magnificPopup({
         type: 'image',
         closeOnContentClick: true,
         mainClass: 'mfp-img-mobile',
@@ -17,8 +17,8 @@ var MagnificPopup = function() {
     });
 
     // Popup gallery
-    $(document).ready(function() {
-      $('.js__popup__gallery').magnificPopup({
+    jQuery(document).ready(function() {
+      jQuery('.js__popup__gallery').magnificPopup({
         delegate: 'a.js__popup__gallery-child',
         type: 'image',
         mainClass: 'mfp-img-mobile',
@@ -34,8 +34,8 @@ var MagnificPopup = function() {
     });
 
     // Multiple Galleries with a single popup
-    $(document).ready(function() {
-      $('.js__popup__multiple-image').magnificPopup({
+    jQuery(document).ready(function() {
+      jQuery('.js__popup__multiple-image').magnificPopup({
         type: 'image',
         tLoading: 'Loading image #%curr%...',
         fixedContentPos: true,
@@ -49,8 +49,8 @@ var MagnificPopup = function() {
     });
 
     // Video iframes
-    $(document).ready(function() {
-      $('.js__popup__youtube, .js__popup__vimeo').magnificPopup({
+    jQuery(document).ready(function() {
+      jQuery('.js__popup__youtube, .js__popup__vimeo').magnificPopup({
         disableOn: 700,
         type: 'iframe',
         mainClass: 'mfp-fade',
@@ -68,6 +68,6 @@ var MagnificPopup = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   MagnificPopup.init();
 });

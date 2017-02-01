@@ -4,7 +4,7 @@ var Masonry = function() {
 
   // Handle Masonry
   var handleMasonry = function() {
-    var $container = $('.js__masonry');
+    var $container = jQuery('.js__masonry');
     // initialize Masonry after all images have loaded
     $container.imagesLoaded( function() {
       $container.masonry({
@@ -13,7 +13,7 @@ var Masonry = function() {
         percentPosition: true
       });
     });
-    $.fn.masonryImagesReveal = function( $items ) {
+    jQuery.fn.masonryImagesReveal = function( $items ) {
       var msnry = this.data('masonry');
       var itemSelector = msnry.options.itemSelector;
       // hide by default
@@ -23,7 +23,7 @@ var Masonry = function() {
       $items.imagesLoaded().progress( function( imgLoad, image ) {
         // get item
         // image is imagesLoaded class, not <img>, <img> is image.img
-        var $item = $( image.img ).parents( itemSelector );
+        var $item = jQuery( image.img ).parents( itemSelector );
         // un-hide item
         $item.show();
         // masonry does its thing
@@ -40,6 +40,6 @@ var Masonry = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   Masonry.init();
 });

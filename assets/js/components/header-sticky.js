@@ -5,19 +5,19 @@ var HeaderSticky = function() {
   // Handle Header Sticky
   var handleHeaderSticky = function() {
     // On loading, check to see if more than 15rem, then add the class
-    if ($('.js__header-sticky').offset().top > 15) {
-      $('.js__header-sticky').addClass('s-header__shrink');
+    if (jQuery('.js__header-sticky').offset().top > 15) {
+      jQuery('.js__header-sticky').addClass('s-header__shrink');
     }
 
     // On scrolling, check to see if more than 15rem, then add the class
-    $(window).on('scroll', function() {
-      if ($('.js__header-sticky').offset().top > 15) {
-        $('.js__header-sticky').addClass('s-header__shrink');
+    jQuery(window).on('scroll', function() {
+      if (jQuery('.js__header-sticky').offset().top > 15) {
+        jQuery('.js__header-sticky').addClass('s-header__shrink');
       } else {
-        $('.js__header-sticky').removeClass('s-header__shrink');
+        jQuery('.js__header-sticky').removeClass('s-header__shrink');
       }
     });
-  }
+  };
 
   return {
     init: function() {
@@ -26,6 +26,6 @@ var HeaderSticky = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   HeaderSticky.init();
 });

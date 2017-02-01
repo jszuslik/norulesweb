@@ -4,7 +4,7 @@ var Portfolio = function() {
 
   // Handle Portfolio
   var handlePortfolio = function() {
-    $('#js__grid-portfolio-gallery').cubeportfolio({
+    jQuery('#js__grid-portfolio-gallery').cubeportfolio({
       filters: '#js__filters-portfolio-gallery',
       layoutMode: 'grid',
       mediaQueries: [{
@@ -43,6 +43,6 @@ var Portfolio = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   Portfolio.init();
 });

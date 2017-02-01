@@ -97,14 +97,15 @@ gulp.task('browserSync', function() {
 // --------------------------------------------------
 
 // Lets us type "gulp" on the command line and run all of our tasks
-gulp.task('default', ['sass', 'minify-css', 'rtlcss', 'uglify', 'watch']);
+// gulp.task('default', ['sass', 'minify-css', 'rtlcss', 'uglify', 'watch']);
 
 // This handles watching and running tasks
-gulp.task('watch', function () {
-    gulp.watch('src/scss/*.scss', ['sass']);
-    gulp.watch('../HTML/css/layout.css', ['minify-css']);
-    gulp.watch('../HTML/css/layout.css', ['rtlcss']);
-    gulp.watch('../HTML/js/**/*.js', ['uglify']);
+gulp.task('watch', ['browserSync','sass', 'minify-css'], function () {
+    gulp.watch('src/scss/**/*.scss', ['sass']);
+    gulp.watch('assets/css/style.css', ['minify-css', browserSync.reload]);
+    gulp.watch('assets/css/layout.css', ['rtlcss', browserSync.reload]);
+    gulp.watch('assets/js/**/*.js', ['uglify', browserSync.reload]);
+    gulp.watch('**/**/*.php', browserSync.reload);
 });
 
 

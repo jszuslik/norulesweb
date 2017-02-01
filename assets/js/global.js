@@ -28,7 +28,7 @@ var Global = function() {
   // Scroll To Section
   var handleScrollToSection = function() {
     jQuery(function() {
-      jQuery('a[href*=#js__scroll-to-]:not([href=#js__scroll-to-])').on('click', function() {
+      jQuery('a[href*="#js__scroll-to-"]:not([href="#js__scroll-to-"])').on('click', function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
           var target = jQuery(this.hash);
           target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');

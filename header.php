@@ -103,6 +103,14 @@
                 </a>
             </li>
             <?php endif; ?>
+            <?php if(get_theme_mod('nrw_pinterest')) : ?>
+                <li class="s-header__action-item">
+                    <a class="s-header__action-link" href="<?php echo esc_url( get_theme_mod('nrw_pinterest') ); ?>" target="_blank">
+                        <i class="g-padding-r-5--xs ti-pinterest"></i>
+                        <span class="g-display-none--xs g-display-inline-block--sm">Pinterest</span>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
         <!-- End Action -->
     </div>

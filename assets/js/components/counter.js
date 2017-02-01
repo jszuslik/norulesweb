@@ -4,7 +4,7 @@ var Counter = function() {
 
   // Handle Counter
   var handleCounter = function() {
-    $('.js__counter').counterUp();
+    jQuery('.js__counter').counterUp();
   }
 
   return {
@@ -14,6 +14,6 @@ var Counter = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   Counter.init();
 });

@@ -5,8 +5,8 @@ var EqualHeight = function() {
   // Handle Equal Height
   var handleEqualHeight = function() {
     $(function($) {
-      $('.js__form-eqaul-height-v1').responsiveEqualHeightGrid();
-      $('.js__tab-eqaul-height-v1').responsiveEqualHeightGrid();
+      jQuery('.js__form-eqaul-height-v1').responsiveEqualHeightGrid();
+      jQuery('.js__tab-eqaul-height-v1').responsiveEqualHeightGrid();
     });
   }
 
@@ -17,6 +17,6 @@ var EqualHeight = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
     EqualHeight.init();
 });

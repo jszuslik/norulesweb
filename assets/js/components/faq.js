@@ -5,7 +5,7 @@ var Portfolio = function() {
   // Handle Portfolio
   var handlePortfolio = function() {
     // init cubeportfolio
-    $('.js__grid-faq').cubeportfolio({
+    jQuery('.js__grid-faq').cubeportfolio({
         filters: '.js__filters-faq',
         defaultFilter: '*',
         animationType: 'sequentially',
@@ -15,7 +15,7 @@ var Portfolio = function() {
         gapHorizontal: 0,
         gapVertical: 0
     });
-  }
+  };
 
   return {
     init: function() {
@@ -24,6 +24,6 @@ var Portfolio = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   Portfolio.init();
 });
