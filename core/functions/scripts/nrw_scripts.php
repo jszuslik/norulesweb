@@ -17,7 +17,7 @@ function nrw_load_scripts() {
     wp_enqueue_style('nrw_cubeportfolio', NRW_LIBS_URI . 'cubeportfolio/css/cubeportfolio.min.css');
 
 
-    wp_enqueue_style('nrw_global_css', NRW_ASSETS_URI . 'css/global/global.css', array(), '0.0.3');
+    wp_enqueue_style('nrw_global_css', NRW_ASSETS_URI . 'css/global/global.css', array(), '0.0.4');
     wp_enqueue_style('nrw_theme_style', NRW_ASSETS_URI . 'css/style.min.css', array(), '0.0.4');
 
     wp_enqueue_style('nrw_dnu_style', get_stylesheet_directory_uri() . '/style.css', array(), '0.0.3');
