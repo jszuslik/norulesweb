@@ -78,39 +78,84 @@
         <!-- End Action -->
 
         <!-- Action -->
+        <?php
+            $social_links = array();
+            if(get_theme_mod('nrw_facebook')) :
+                $social_links['nrw_facebook'] = array (
+                        'icon' => 'ti-facebook',
+                        'name' => 'Facebook'
+                );
+            endif;
+            if(get_theme_mod('nrw_twitter')) :
+                $social_links['nrw_twitter'] = array (
+                    'icon' => 'ti-twitter',
+                    'name' => 'Twitter'
+                );
+            endif;
+            if(get_theme_mod('nrw_instagram')) :
+                $social_links['nrw_instagram'] = array (
+                    'icon' => 'ti-instagram',
+                    'name' => 'Instagram'
+                );
+            endif;
+            if(get_theme_mod('nrw_pinterest')) :
+                $social_links['nrw_pinterest'] = array (
+                    'icon' => 'ti-pinterest',
+                    'name' => 'Pinterest'
+                );
+            endif;
+            if(get_theme_mod('nrw_bloglovin')) :
+                $social_links['nrw_bloglovin'] = array (
+                    'icon' => 'ti-heart',
+                    'name' => 'Bloglovin\''
+                );
+            endif;
+            if(get_theme_mod('nrw_google')) :
+                $social_links['nrw_google'] = array (
+                    'icon' => 'ti-google',
+                    'name' => 'Google+'
+                );
+            endif;
+            if(get_theme_mod('nrw_tumblr')) :
+                $social_links['nrw_tumblr'] = array (
+                    'icon' => 'ti-tumblr',
+                    'name' => 'Tumblr'
+                );
+            endif;
+            if(get_theme_mod('nrw_youtube')) :
+                $social_links['nrw_youtube'] = array (
+                    'icon' => 'ti-youtube',
+                    'name' => 'YouTube'
+                );
+            endif;
+            if(get_theme_mod('nrw_dribbble')) :
+                $social_links['nrw_dribbble'] = array (
+                    'icon' => 'ti-dribbble',
+                    'name' => 'Dribbble'
+                );
+            endif;
+            if(get_theme_mod('nrw_soundcloud')) :
+                $social_links['nrw_soundcloud'] = array (
+                    'icon' => 'ti-soundcloud',
+                    'name' => 'SoundCloud'
+                );
+            endif;
+            if(get_theme_mod('nrw_linkedin')) :
+                $social_links['nrw_linkedin'] = array (
+                    'icon' => 'ti-linkedin',
+                    'name' => 'LinkedIn'
+                );
+            endif;
+        ?>
         <ul class="list-inline s-header__action s-header__action--rb">
-            <?php if(get_theme_mod('nrw_facebook')) : ?>
-            <li class="s-header__action-item">
-                <a class="s-header__action-link" href="<?php echo esc_url( get_theme_mod('nrw_facebook') ); ?>" target="_blank">
-                    <i class="g-padding-r-5--xs ti-facebook"></i>
-                    <span class="g-display-none--xs g-display-inline-block--sm">Facebook</span>
-                </a>
-            </li>
-            <?php endif; ?>
-            <?php if(get_theme_mod('nrw_twitter')) : ?>
-            <li class="s-header__action-item">
-                <a class="s-header__action-link" href="<?php echo esc_url( get_theme_mod('nrw_twitter') ); ?>" target="_blank">
-                    <i class="g-padding-r-5--xs ti-twitter"></i>
-                    <span class="g-display-none--xs g-display-inline-block--sm">Twitter</span>
-                </a>
-            </li>
-            <?php endif; ?>
-            <?php if(get_theme_mod('nrw_instagram')) : ?>
-            <li class="s-header__action-item">
-                <a class="s-header__action-link" href="<?php echo esc_url( get_theme_mod('nrw_instagram') ); ?>" target="_blank">
-                    <i class="g-padding-r-5--xs ti-instagram"></i>
-                    <span class="g-display-none--xs g-display-inline-block--sm">Instagram</span>
-                </a>
-            </li>
-            <?php endif; ?>
-            <?php if(get_theme_mod('nrw_pinterest')) : ?>
+            <?php foreach($social_links as $key => $value) : ?>
                 <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="<?php echo esc_url( get_theme_mod('nrw_pinterest') ); ?>" target="_blank">
-                        <i class="g-padding-r-5--xs ti-pinterest"></i>
-                        <span class="g-display-none--xs g-display-inline-block--sm">Pinterest</span>
+                    <a class="s-header__action-link" href="<?php echo esc_url( get_theme_mod($key) ); ?>" target="_blank">
+                        <i class="g-padding-r-5--xs <?php echo $value['icon']; ?>"></i>
+                        <span class="g-display-none--xs g-display-inline-block--sm"><?php echo $value['name']; ?></span>
                     </a>
                 </li>
-            <?php endif; ?>
+            <?php endforeach; ?>
         </ul>
         <!-- End Action -->
     </div>
@@ -132,18 +177,7 @@
 //                ) );
 //                ?>
 <!--                <div class="social pull-right">-->
-<!--                    --><?php //if(get_theme_mod('nrw_facebook')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_facebook') ); ?><!--" target="_blank"><i class="fa fa-facebook"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_twitter')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_twitter') ); ?><!--" target="_blank"><i class="fa fa-twitter"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_instagram')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_instagram') ); ?><!--" target="_blank"><i class="fa fa-instagram"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_pinterest')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_pinterest') ); ?><!--" target="_blank"><i class="fa fa-pinterest"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_bloglovin')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_bloglovin') ); ?><!--" target="_blank"><i class="fa fa-heart"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_google')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_google') ); ?><!--" target="_blank"><i class="fa fa-google-plus"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_tumblr')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_tumblr') ); ?><!--" target="_blank"><i class="fa fa-tumblr"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_youtube')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_youtube') ); ?><!--" target="_blank"><i class="fa fa-youtube-play"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_dribbble')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_dribbble') ); ?><!--" target="_blank"><i class="fa fa-dribbble"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_soundcloud')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_soundcloud') ); ?><!--" target="_blank"><i class="fa fa-soundcloud"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_vimeo')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_vimeo') ); ?><!--" target="_blank"><i class="fa fa-vimeo-square"></i></a>--><?php //endif; ?>
-<!--                    --><?php //if(get_theme_mod('nrw_linkedin')) : ?><!--<a href="--><?php //echo esc_url( get_theme_mod('nrw_linkedin') ); ?><!--" target="_blank"><i class="fa fa-linkedin"></i></a>--><?php //endif; ?>
+
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->

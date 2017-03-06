@@ -6673,7 +6673,7 @@
 }
 
 .g-padding-y-100--xs {
-  padding-top: 12.25rem;
+  padding-top: 6.25rem;
   padding-bottom: 6.25rem;
 }
 
@@ -7212,7 +7212,7 @@
 ------------------------------------*/
 /* Text Colors */
 .g-color--primary {
-  color: #13b1cd !important;
+  color: #03a9f4 !important;
 }
 
 .g-color--blueviolet {
@@ -7290,7 +7290,7 @@
 
 /* Background Colors */
 .g-bg-color--primary {
-  background-color: #13b1cd !important;
+  background-color: #03a9f4 !important;
 }
 
 .g-bg-color--blueviolet {

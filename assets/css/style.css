@@ -784,7 +784,7 @@ fieldset[disabled] .s-btn {
   height: 9.375rem;
   border: 1px solid;
   z-index: -1;
-  border-color: rgba(108, 184, 237, 0.9);
+  border-color: rgba(3, 169, 244, 0.9);
   content: " ";
 }
 
@@ -2372,4 +2372,13 @@ fieldset[disabled] .s-btn {
 
 .s-swiper__pagination-v1--dark .swiper-pagination-bullet-active {
   background: #13b1cd;
+}
+
+.g-padding-y-100--xs {
+  padding-bottom: 1.25rem;
+}
+
+.s-promo-block-v1__square-effect:after {
+  z-index: 1;
+  border-color: rgba(3, 169, 244, 0.5);
 }
