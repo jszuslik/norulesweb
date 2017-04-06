@@ -35,6 +35,7 @@ function nrw_load_scripts() {
     wp_enqueue_script('nrw_parallax_scripts', NRW_LIBS_URI . 'jquery.parallax.min.js', array(), false, true);
     wp_enqueue_script('nrw_googlemap_scripts', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBsXUGTFS09pLVdsYEE9YrO2y4IAncAO2U', array(), false, true);
     wp_enqueue_script('nrw_wow_scripts', NRW_LIBS_URI . 'jquery.wow.min.js', array(), false, true);
+    wp_enqueue_script('nrw_skrollr_scripts', NRW_LIBS_URI . 'skrollr/skrollr.min.js', array(), false, true);
 
     wp_enqueue_script('nrw_global_scripts', NRW_ASSETS_URI . 'js/global.min.js', array(), false, true);
     wp_enqueue_script('nrw_sticky_scripts', NRW_ASSETS_URI . 'js/components/header-sticky.min.js', array(), false, true);
