@@ -5,11 +5,16 @@
   z-index: 1;
   border-color: rgba(3,169,244,.5);
 }
-.colored-rule {
-  float: right;
+.colored-rule-right,
+.colored-rule-left {
   margin: 0;
+  width: 1px;
   border-top: 1px solid #03a9f4;
-  transform-origin:50% 100%;
-  -ms-transform-origin:50% 100%; /* IE 9 */
-  -webkit-transform-origin:50% 100%; /* Chrome, Safari, Opera */
+}
+
+.colored-rule-right {
+  float: right;
+}
+.colored-rule-left {
+  float: left;
 }

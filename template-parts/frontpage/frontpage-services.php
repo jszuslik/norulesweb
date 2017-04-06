@@ -43,10 +43,7 @@
 <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
     </div>
 </div>
-<hr class="colored-rule" data-start="transform: scaleY(1)"
-    data-1000-start="transform: scaleY(200)"
-    data-2000-start="transform: scaleY(1)"
-    anchor-target="body">
+<hr class="colored-rule-right" data-1000="transform: scaleX(1)" data-1500="transform: scaleX(2500)">
 <div class="g-promo-section">
     <div class="container g-padding-y-80--xs g-padding-y-125--sm">
         <div class="row">
@@ -70,6 +67,7 @@
         <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
     </div>
 </div>
+<hr class="colored-rule-left" data-1500="transform: scaleX(1)" data-2000="transform: scaleX(2500)">
 <div class="g-promo-section">
     <div class="container g-padding-y-80--xs g-padding-y-125--sm">
         <div class="row">
