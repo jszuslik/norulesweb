@@ -1,4 +1,11 @@
-<?php ?>
+<?php
+
+    $page_title_1 = 'web-design-and-ux';
+    $post_1 = get_page_id_by_slug($page_title_1 );
+    p($post_1);
+
+
+?>
 <!-- Culture -->
 <div class="g-promo-section">
     <div class="container g-padding-y-80--xs g-padding-y-125--sm">
