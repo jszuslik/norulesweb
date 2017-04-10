@@ -56,6 +56,7 @@
     </div>
     <!-- End Copyright -->
 </footer>
+</div>
 <!--========== END FOOTER ==========-->
 
 

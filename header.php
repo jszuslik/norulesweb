@@ -9,6 +9,7 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<div id="full_wrapper">
 <!--========== HEADER ==========-->
 <header class="navbar-fixed-top s-header js__header-sticky js__header-overlay">
     <!-- Navbar -->
