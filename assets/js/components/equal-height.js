@@ -4,7 +4,7 @@ var EqualHeight = function() {
 
   // Handle Equal Height
   var handleEqualHeight = function() {
-    $(function($) {
+    jQuery(function($) {
       jQuery('.js__form-eqaul-height-v1').responsiveEqualHeightGrid();
       jQuery('.js__tab-eqaul-height-v1').responsiveEqualHeightGrid();
     });

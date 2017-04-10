@@ -1198,7 +1198,7 @@
   Border
 ------------------------------------*/
 .g-hor-border-1__solid--primary {
-  border: 0.0625rem solid #13b1cd;
+  border: 0.0625rem solid #03a9f4;
 }
 
 .g-hor-border-4__solid--white {
@@ -1209,7 +1209,7 @@
   Box Shadow
 ------------------------------------*/
 .g-box-shadow__primary-v1 {
-  box-shadow: 0 0.3125rem 1rem 0 rgba(19, 177, 205, 0.2);
+  box-shadow: 0 0.3125rem 1rem 0 rgba(3, 169, 244, 0.2);
 }
 
 .g-box-shadow__blueviolet-v1 {
@@ -7281,11 +7281,11 @@
 
 /* Hover Colors */
 .g-color--text[href]:hover {
-  color: #13b1cd !important;
+  color: #03a9f4 !important;
 }
 
 .g-color--white-opacity[href]:hover {
-  color: #13b1cd !important;
+  color: #03a9f4 !important;
 }
 
 /* Background Colors */
@@ -7358,11 +7358,11 @@
 }
 
 .g-bg-color--primary-to-blueviolet-ltr {
-  background-image: linear-gradient(145deg, rgba(19, 177, 205, 0.95) 0%, rgba(152, 119, 234, 0.95) 100%);
+  background-image: linear-gradient(145deg, rgba(3, 169, 244, 0.95) 0%, rgba(152, 119, 234, 0.95) 100%);
   background-repeat: repeat-x;
 }
 
 .g-bg-color--primary-ltr {
-  background-image: linear-gradient(145deg, rgba(19, 177, 205, 0.6) 0%, #13b1cd 100%);
+  background-image: linear-gradient(145deg, rgba(3, 169, 244, 0.6) 0%, #03a9f4 100%);
   background-repeat: repeat-x;
 }

@@ -4,7 +4,7 @@ var Scrollbar = function() {
 
   // Handle Scrollbar
   var handleScrollbar = function() {
-    $('.js__scrollbar').mCustomScrollbar({
+    jQuery('.js__scrollbar').mCustomScrollbar({
       theme: 'minimal'
     });
   }
@@ -17,6 +17,6 @@ var Scrollbar = function() {
   }
 }();
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
   Scrollbar.init();
 });

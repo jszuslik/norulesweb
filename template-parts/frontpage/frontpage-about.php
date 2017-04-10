@@ -5,4 +5,3 @@
         <h2 class="g-font-size-32--xs g-font-size-26--md">We work hard to ensure that every customer is a success story. With each project we look for the areas that’ll have the biggest impact so you can get the greatest return. Learn more about what we provide below.</h2>
     </div>
 </div>
-

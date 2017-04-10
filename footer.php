@@ -2,6 +2,9 @@
 
 ?>
 <!--========== FOOTER ==========-->
+
+<?php get_template_part('template-parts/frontpage/frontpage', 'feedback'); ?>
+
 <footer class="g-bg-color--dark">
     <!-- Links -->
     <div class="g-hor-divider__dashed--white-opacity-lightest">

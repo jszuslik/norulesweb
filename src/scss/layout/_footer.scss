@@ -10,7 +10,7 @@
 		@include position(absolute, $top: 0, $left: .9375rem, $bottom: 0);
 		@include size(70%, auto);
 		z-index: -1;
-		background: url('../img/widgets/worldmap.png') no-repeat center center;
+		background: url('http://norulesweb.dev/wp-content/uploads/2017/04/worldmap.png') no-repeat center center;
 		background-size: cover;
 		content: " ";
 	}

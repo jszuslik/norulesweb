@@ -1,4 +1,4 @@
-$(window).load(function(){
+jQuery(window).load(function($){
   /* One Item */
   var swiper = new Swiper('.js__swiper-one-item', {
     nextButton: '.js__swiper-btn--next',

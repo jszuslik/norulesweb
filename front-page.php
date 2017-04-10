@@ -9,14 +9,13 @@ get_header();
 
     <?php get_template_part('template-parts/frontpage/frontpage', 'about'); ?>
 
-    <?php get_template_part('template-parts/frontpage/frontpage', 'parallax1'); ?>
-
     <?php get_template_part('template-parts/frontpage/frontpage', 'services'); ?>
 
-    <?php get_template_part('template-parts/frontpage/frontpage', 'subscribe'); ?>
+<!--    --><?php //get_template_part('template-parts/frontpage/frontpage', 'parallax1'); ?>
 
-    <?php get_template_part('template-parts/frontpage/frontpage', 'feedback'); ?>
+    <?php get_template_part('template-parts/frontpage/frontpage', 'join'); ?>
 
+<!--    --><?php //get_template_part('template-parts/frontpage/frontpage', 'subscribe'); ?>
 
 
 <?php get_footer(); ?>
