@@ -263,11 +263,13 @@ function nrw_print_child_info($id) {
             array('1250','2000')
     );
     $args = array(
+        'sort_order' => 'desc',
         'child_of' => get_the_id()
     );
     $pages = get_pages($args);
     $page_count = 0;
     foreach ($pages as $page) :
+//        p($page);
         if($page_count % 2 == 0) :
                 if($page_count >= 2) : ?>
                     <hr class="colored-rule-right" data-<?php echo $data_options[$page_count - 1][0]; ?>="transform: scaleX(1)" data-<?php echo $data_options[$page_count - 1][1]; ?>="transform: scaleX(2500)">
