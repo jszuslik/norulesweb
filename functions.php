@@ -1,4 +1,5 @@
 <?php
+define('NRW_CORE_ADMIN', get_template_directory() . '/admin/');
 define('NRW_LIBS_URI', get_template_directory_uri() . '/libs/');
 define('NRW_CORE_PATH', get_template_directory() . '/core/');
 define('NRW_CORE_URI', get_template_directory_uri() . '/core/');
@@ -255,3 +256,88 @@ function special_nav_class( $classes, $item, $args ) {
 
     return $classes;
 }
+function nrw_print_child_info($id) {
+    $data_options = array(
+            array('250','1000'),
+            array('750','1500'),
+            array('1250','2000')
+    );
+    $args = array(
+        'child_of' => get_the_id()
+    );
+    $pages = get_pages($args);
+    $page_count = 0;
+    foreach ($pages as $page) :
+        if($page_count % 2 == 0) :
+                if($page_count >= 2) : ?>
+                    <hr class="colored-rule-right" data-<?php echo $data_options[$page_count - 1][0]; ?>="transform: scaleX(1)" data-<?php echo $data_options[$page_count - 1][1]; ?>="transform: scaleX(2500)">
+                <?php endif;
+                nrw_left_side_service_display($page);
+            else :
+                if($page_count >= 1) : ?>
+                    <hr class="colored-rule-left" data-<?php echo $data_options[$page_count - 1][0]; ?>="transform: scaleX(1)" data-<?php echo $data_options[$page_count - 1][1]; ?>="transform: scaleX(2500)">
+                <?php endif;
+                nrw_right_side_service_display($page);
+    endif; $page_count++; endforeach;
+
+}
+function nrw_left_side_service_display($page) { ?>
+    <div class="g-promo-section">
+        <div class="container g-padding-y-80--xs g-padding-y-125--sm">
+            <div class="row">
+                <div class="col-md-4 g-margin-t-15--xs g-margin-b-60--xs g-margin-b-0--lg">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">
+                        <?php echo get_the_title($page->post_parent); ?>
+                    </p>
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".1s">
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"><?php echo $page->post_title; ?></h2>
+                    </div>
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"></h2>
+                    </div>
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
+                        <div>
+                            <a href="<?php the_permalink($page->ID); ?>" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-80--xs"><?php echo get_post_meta($page->ID, 'nrw_page_btn', true); ?></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-1">
+                    <?php echo $page->post_content; ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 g-promo-section__img-right--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo get_post_meta($page->ID, 'nrw_meta_image', true);?>') no-repeat; padding: 0; opacity: 0.9">
+            <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/bright-squares.png')"></div>
+            <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
+        </div>
+    </div>
+<?php }
+function nrw_right_side_service_display($page) { ?>
+    <div class="g-promo-section">
+        <div class="container g-padding-y-80--xs g-padding-y-125--sm">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-3">
+                    <?php echo $page->post_content; ?>
+                </div>
+                <div class="col-md-4 g-margin-t-15--xs g-margin-b-60--xs g-margin-b-0--lg col-md-offset-1">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs"><?php echo get_the_title($page->post_parent); ?></p>
+                    <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".1s">
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"><?php echo $page->post_title; ?></h2>
+                    </div>
+                    <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".3s">
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"></h2>
+                    </div>
+                    <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".5s">
+                        <div>
+                            <a href="<?php the_permalink($page->ID); ?>" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-80--xs"><?php echo get_post_meta($page->ID, 'nrw_page_btn', true); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 g-promo-section__img-left--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo get_post_meta($page->ID, 'nrw_meta_image', true);?>') no-repeat; padding: 0; opacity: 0.9">
+            <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/bright-squares.png')"></div>
+            <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
+        </div>
+    </div>
+<?php }
