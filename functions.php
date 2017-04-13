@@ -261,7 +261,8 @@ function nrw_print_child_info($id) {
         array('250','1000'),
         array('750','1500'),
         array('1250','2000'),
-        array('1750','2500')
+        array('1750','2500'),
+        array('2250','3000')
     );
     $args = array(
         'sort_order' => 'desc',
