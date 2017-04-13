@@ -258,9 +258,10 @@ function special_nav_class( $classes, $item, $args ) {
 }
 function nrw_print_child_info($id) {
     $data_options = array(
-            array('250','1000'),
-            array('750','1500'),
-            array('1250','2000')
+        array('250','1000'),
+        array('750','1500'),
+        array('1250','2000'),
+        array('1750','2500')
     );
     $args = array(
         'sort_order' => 'desc',
@@ -287,15 +288,15 @@ function nrw_left_side_service_display($page) { ?>
     <div class="g-promo-section">
         <div class="container g-padding-y-80--xs g-padding-y-125--sm">
             <div class="row">
-                <div class="col-md-4 g-margin-t-15--xs g-margin-b-60--xs g-margin-b-0--lg">
+                <div class="col-md-4 g-margin-t-15--xs g-margin-b-40--xs g-margin-b-0--lg">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">
                         <?php echo get_the_title($page->post_parent); ?>
                     </p>
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".1s">
-                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"><?php echo $page->post_title; ?></h2>
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-50--md"><?php echo $page->post_title; ?></h2>
                     </div>
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"></h2>
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-50--md"></h2>
                     </div>
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
                         <div>
@@ -321,13 +322,13 @@ function nrw_right_side_service_display($page) { ?>
                 <div class="col-md-4 col-md-offset-3">
                     <?php echo $page->post_content; ?>
                 </div>
-                <div class="col-md-4 g-margin-t-15--xs g-margin-b-60--xs g-margin-b-0--lg col-md-offset-1">
+                <div class="col-md-4 g-margin-t-15--xs g-margin-b-40--xs g-margin-b-0--lg col-md-offset-1">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs"><?php echo get_the_title($page->post_parent); ?></p>
                     <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".1s">
-                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"><?php echo $page->post_title; ?></h2>
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-50--md"><?php echo $page->post_title; ?></h2>
                     </div>
                     <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".3s">
-                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md"></h2>
+                        <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-50--md"></h2>
                     </div>
                     <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".5s">
                         <div>
