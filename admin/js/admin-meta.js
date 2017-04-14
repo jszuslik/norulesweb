@@ -10,7 +10,9 @@ jQuery(document).ready(function($){
     var meta_image_frame;
 
     // Runs when the image button is clicked.
-    $('#nrw_image_btn').click(function(e){
+    $('.nrw_button').click(function(e){
+        var sib = $(this).siblings("input");
+        console.log(sib[0]);
 
         // Prevents the default action from occuring.
         e.preventDefault();
@@ -35,7 +37,7 @@ jQuery(document).ready(function($){
             var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
 
             // Sends the attachment URL to our custom image input field.
-            $('#nrw_meta_image').val(media_attachment.url);
+            sib.val(media_attachment.url);
         });
 
         // Opens the media library frame.

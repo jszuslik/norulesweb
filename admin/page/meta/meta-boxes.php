@@ -6,13 +6,55 @@ define('NRW_PAGE_NONCE', 'nrw_page_nonce');
 class NrwPageMeta {
 
     public function __construct() {
-        add_action('add_meta_boxes', array( $this, 'nrw_page_meta' ) );
-        add_action('save_post', array( $this, 'nrw_save_page_meta' ) );
+        $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+        $post = get_post($post_id);
+        if($post->post_name == 'home'){
+            add_action('add_meta_boxes', array( $this, 'nrw_home_page_meta' ) );
+        } else {
+            add_action('add_meta_boxes', array( $this, 'nrw_page_meta' ) );
+            add_action('save_post', array( $this, 'nrw_save_page_meta' ) );
+        }
+
         add_action('admin_print_styles', array( $this, 'nrw_meta_image_enqueue'));
+    }
+
+    public function nrw_home_page_meta() {
+        add_meta_box( 'nrw_home_page_meta', __( 'Funnel Settings', NRW_TEXT_DOMAIN), array($this, 'nrw_home_page_meta_callback'), array('page'));
     }
 
     public function nrw_page_meta() {
         add_meta_box( 'nrw_page_meta', __( 'Funnel Settings', NRW_TEXT_DOMAIN), array($this, 'nrw_page_meta_callback'), array('page', 'post', 'product'));
+    }
+
+    public function nrw_home_page_meta_callback( $post ) {
+        wp_nonce_field(basename(__FILE__), NRW_PAGE_NONCE);
+        $nrw_stored_page_meta = get_post_meta($post->ID);
+        $field_array = array(
+            array(
+                'type' => 'image',
+                'name' => 'nrw_meta_image_1',
+                'id' => 'nrw_meta_image_1',
+                'meta_id' => $nrw_stored_page_meta,
+                'label' => __('Image 1', NRW_TEXT_DOMAIN),
+                'description' => 'This image displays on the left of the three image grid'
+            ),
+            array(
+                'type' => 'image',
+                'name' => 'nrw_meta_image_2',
+                'id' => 'nrw_meta_image_2',
+                'meta_id' => $nrw_stored_page_meta,
+                'label' => __('Image 2', NRW_TEXT_DOMAIN),
+                'description' => 'This image displays on the top right of the three image grid'
+            ),array(
+                'type' => 'image',
+                'name' => 'nrw_meta_image_3',
+                'id' => 'nrw_meta_image_3',
+                'meta_id' => $nrw_stored_page_meta,
+                'label' => __('Image 3', NRW_TEXT_DOMAIN),
+                'description' => 'This image displays on the bottom right of the three image grid'
+            )
+        );
+        $this->do_meta_fields($field_array);
     }
 
     public function nrw_page_meta_callback( $post ) {
@@ -66,9 +108,9 @@ class NrwPageMeta {
                     break;
                 case 'image':
                     $fields .= '<div>';
-                    $fields .= '<label>' . $label . '</label>';
-                    $fields .= '<p><input type="text" name="' . $name . '" id="' . $id . '" value="' . $value[0] . '" style="width: 100%" /></p>';
-                    $fields .= '<p><input type="button" id="nrw_image_btn" class="button" value="'. __( 'Choose or Upload an Image', NRW_TEXT_DOMAIN) .'"/></p>';
+                    $fields .= '<label>' . $label . '</label><br><small>' . $description . '</small>';
+                    $fields .= '<><input type="text" name="' . $name . '" id="' . $id . '" value="' . $value[0] . '" style="width: 100%" /><br>';
+                    $fields .= '<input type="button" id="nrw_image_btn" class="button nrw_button" value="'. __( 'Choose or Upload an Image', NRW_TEXT_DOMAIN) .'"/></p>';
                     $fields .= '</div>';
             }
         }
@@ -88,6 +130,15 @@ class NrwPageMeta {
         }
         if (isset($_POST['nrw_meta_image'])) {
             update_post_meta( $post_id, 'nrw_meta_image', sanitize_text_field($_POST['nrw_meta_image'] ) );
+        }
+        if (isset($_POST['nrw_meta_image_1'])) {
+            update_post_meta( $post_id, 'nrw_meta_image_1', sanitize_text_field($_POST['nrw_meta_image_1'] ) );
+        }
+        if (isset($_POST['nrw_meta_image_2'])) {
+            update_post_meta( $post_id, 'nrw_meta_image_2', sanitize_text_field($_POST['nrw_meta_image_2'] ) );
+        }
+        if (isset($_POST['nrw_meta_image_3'])) {
+            update_post_meta( $post_id, 'nrw_meta_image_3', sanitize_text_field($_POST['nrw_meta_image_3'] ) );
         }
     }
 

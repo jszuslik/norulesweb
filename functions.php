@@ -25,6 +25,7 @@ function nrw_setup() {
     add_theme_support('automatic-feed-links');
     add_theme_support('post-thumbnails');
     add_image_size(NRW_TEXT_DOMAIN . '-fullwidth', 1170, 0, true);
+    add_image_size( NRW_TEXT_DOMAIN . '-funnels', 970, 970, array('center','center'));
     register_nav_menus(
         array(
             'primary' => esc_html__('Primary Menu', NRW_TEXT_DOMAIN),
@@ -310,7 +311,7 @@ function nrw_left_side_service_display($page) { ?>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 g-promo-section__img-right--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo get_post_meta($page->ID, 'nrw_meta_image', true);?>') no-repeat; padding: 0; opacity: 0.9">
+        <div class="col-sm-3 g-promo-section__img-right--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo nrw_return_funnel_img_url( get_post_meta($page->ID, 'nrw_meta_image', true));?>') no-repeat; padding: 0; opacity: 0.9">
             <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/bright-squares.png')"></div>
             <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
         </div>
@@ -339,9 +340,46 @@ function nrw_right_side_service_display($page) { ?>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 g-promo-section__img-left--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo get_post_meta($page->ID, 'nrw_meta_image', true);?>') no-repeat; padding: 0; opacity: 0.9">
+        <div class="col-sm-3 g-promo-section__img-left--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo nrw_return_funnel_img_url( get_post_meta($page->ID, 'nrw_meta_image', true));?>') no-repeat; padding: 0; opacity: 0.9">
             <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/bright-squares.png')"></div>
             <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
         </div>
     </div>
 <?php }
+
+function nrw_return_funnel_img_url( $url ) {
+    $att_id = nrw_get_attachment_id_by_url($url);
+    $image_arr = wp_get_attachment_image_src($att_id, NRW_TEXT_DOMAIN . '-funnels');
+    return $image_arr[0];
+}
+
+/**
+ * Return an ID of an attachment by searching the database with the file URL.
+ *
+ * First checks to see if the $url is pointing to a file that exists in
+ * the wp-content directory. If so, then we search the database for a
+ * partial match consisting of the remaining path AFTER the wp-content
+ * directory. Finally, if a match is found the attachment ID will be
+ * returned.
+ *
+ * @param string $url The URL of the image (ex: http://mysite.com/wp-content/uploads/2013/05/test-image.jpg)
+ *
+ * @return int|null $attachment Returns an attachment ID, or null if no attachment is found
+ */
+function nrw_get_attachment_id_by_url( $url ) {
+    // Split the $url into two parts with the wp-content directory as the separator
+    $parsed_url  = explode( parse_url( WP_CONTENT_URL, PHP_URL_PATH ), $url );
+    // Get the host of the current site and the host of the $url, ignoring www
+    $this_host = str_ireplace( 'www.', '', parse_url( home_url(), PHP_URL_HOST ) );
+    $file_host = str_ireplace( 'www.', '', parse_url( $url, PHP_URL_HOST ) );
+    // Return nothing if there aren't any $url parts or if the current host and $url host do not match
+    if ( ! isset( $parsed_url[1] ) || empty( $parsed_url[1] ) || ( $this_host != $file_host ) ) {
+        return;
+    }
+    // Now we're going to quickly search the DB for any attachment GUID with a partial path match
+    // Example: /uploads/2013/05/test-image.jpg
+    global $wpdb;
+    $attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->prefix}posts WHERE guid RLIKE %s;", $parsed_url[1] ) );
+    // Returns null if no attachment is found
+    return $attachment[0];
+}
