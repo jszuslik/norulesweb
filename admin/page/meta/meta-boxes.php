@@ -6,16 +6,18 @@ define('NRW_PAGE_NONCE', 'nrw_page_nonce');
 class NrwPageMeta {
 
     public function __construct() {
-        $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-        $post = get_post($post_id);
-        if($post->post_name == 'home'){
-            add_action('add_meta_boxes', array( $this, 'nrw_home_page_meta' ) );
-        } else {
-            add_action('add_meta_boxes', array( $this, 'nrw_page_meta' ) );
+        global $pagenow;
+        if($pagenow == 'post.php') {
+            $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+            $post = get_post($post_id);
+            if($post->post_name == 'home'){
+                add_action('add_meta_boxes', array( $this, 'nrw_home_page_meta' ) );
+            } else {
+                add_action('add_meta_boxes', array( $this, 'nrw_page_meta' ) );
+            }
             add_action('save_post', array( $this, 'nrw_save_page_meta' ) );
+            add_action('admin_print_styles', array( $this, 'nrw_meta_image_enqueue'));
         }
-
-        add_action('admin_print_styles', array( $this, 'nrw_meta_image_enqueue'));
     }
 
     public function nrw_home_page_meta() {
@@ -34,6 +36,7 @@ class NrwPageMeta {
                 'type' => 'image',
                 'name' => 'nrw_meta_image_1',
                 'id' => 'nrw_meta_image_1',
+                'btn_id' => 'nrw_image_btn_1',
                 'meta_id' => $nrw_stored_page_meta,
                 'label' => __('Image 1', NRW_TEXT_DOMAIN),
                 'description' => 'This image displays on the left of the three image grid'
@@ -42,6 +45,7 @@ class NrwPageMeta {
                 'type' => 'image',
                 'name' => 'nrw_meta_image_2',
                 'id' => 'nrw_meta_image_2',
+                'btn_id' => 'nrw_image_btn_2',
                 'meta_id' => $nrw_stored_page_meta,
                 'label' => __('Image 2', NRW_TEXT_DOMAIN),
                 'description' => 'This image displays on the top right of the three image grid'
@@ -49,6 +53,7 @@ class NrwPageMeta {
                 'type' => 'image',
                 'name' => 'nrw_meta_image_3',
                 'id' => 'nrw_meta_image_3',
+                'btn_id' => 'nrw_image_btn_3',
                 'meta_id' => $nrw_stored_page_meta,
                 'label' => __('Image 3', NRW_TEXT_DOMAIN),
                 'description' => 'This image displays on the bottom right of the three image grid'
@@ -90,6 +95,7 @@ class NrwPageMeta {
             $name = $field['name'];
             $id = $field['id'];
             $label = $field['label'];
+            $btn_id = $field['btn_id'];
             if(isset($meta_fields[$name]))
                 $value = $meta_fields[$name];
             $description = $field['description'];
@@ -110,7 +116,7 @@ class NrwPageMeta {
                     $fields .= '<div>';
                     $fields .= '<label>' . $label . '</label><br><small>' . $description . '</small>';
                     $fields .= '<><input type="text" name="' . $name . '" id="' . $id . '" value="' . $value[0] . '" style="width: 100%" /><br>';
-                    $fields .= '<input type="button" id="nrw_image_btn" class="button nrw_button" value="'. __( 'Choose or Upload an Image', NRW_TEXT_DOMAIN) .'"/></p>';
+                    $fields .= '<input type="button" id="' . $btn_id . '" class="button nrw_button" value="'. __( 'Choose or Upload an Image', NRW_TEXT_DOMAIN) .'"/></p>';
                     $fields .= '</div>';
             }
         }

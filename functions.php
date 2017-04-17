@@ -10,6 +10,9 @@ define('NRW_CORE_CLASSES', NRW_CORE_PATH . 'classes/');
 define('NRW_CORE_FUNCTIONS', NRW_CORE_PATH . 'functions/');
 define('NRW_CORE_WIDGETS', NRW_CORE_PATH . 'widgets/');
 define('NRW_TEXT_DOMAIN', 'nrw');
+define('NRW_THUMB_FUNNELS', NRW_TEXT_DOMAIN . '-funnels');
+define('NRW_THUMB_SER_LEFT', NRW_TEXT_DOMAIN . '-serviceleft');
+define('NRW_THUMB_SER_RIGHT', NRW_TEXT_DOMAIN . '-serviceright');
 
 
 
@@ -26,6 +29,8 @@ function nrw_setup() {
     add_theme_support('post-thumbnails');
     add_image_size(NRW_TEXT_DOMAIN . '-fullwidth', 1170, 0, true);
     add_image_size( NRW_TEXT_DOMAIN . '-funnels', 970, 970, array('center','center'));
+    add_image_size( NRW_TEXT_DOMAIN . '-serviceleft', 273, 375, array('center','center'));
+    add_image_size( NRW_TEXT_DOMAIN . '-serviceright', 273, 182, array('center','center'));
     register_nav_menus(
         array(
             'primary' => esc_html__('Primary Menu', NRW_TEXT_DOMAIN),
@@ -311,7 +316,7 @@ function nrw_left_side_service_display($page) { ?>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 g-promo-section__img-right--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo nrw_return_funnel_img_url( get_post_meta($page->ID, 'nrw_meta_image', true));?>') no-repeat; padding: 0; opacity: 0.9">
+        <div class="col-sm-3 g-promo-section__img-right--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo nrw_return_img_url( get_post_meta($page->ID, 'nrw_meta_image', true), NRW_THUMB_FUNNELS);?>') no-repeat; padding: 0; opacity: 0.9">
             <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/bright-squares.png')"></div>
             <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
         </div>
@@ -340,16 +345,16 @@ function nrw_right_side_service_display($page) { ?>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 g-promo-section__img-left--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo nrw_return_funnel_img_url( get_post_meta($page->ID, 'nrw_meta_image', true));?>') no-repeat; padding: 0; opacity: 0.9">
+        <div class="col-sm-3 g-promo-section__img-left--lg g-bg-position--center g-height-100-percent--md" style="background: url('<?php echo nrw_return_img_url( get_post_meta($page->ID, 'nrw_meta_image', true), NRW_THUMB_FUNNELS);?>') no-repeat; padding: 0; opacity: 0.9">
             <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/bright-squares.png')"></div>
             <!--        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x970.jpg" alt="Image">-->
         </div>
     </div>
 <?php }
 
-function nrw_return_funnel_img_url( $url ) {
+function nrw_return_img_url( $url, $tag ) {
     $att_id = nrw_get_attachment_id_by_url($url);
-    $image_arr = wp_get_attachment_image_src($att_id, NRW_TEXT_DOMAIN . '-funnels');
+    $image_arr = wp_get_attachment_image_src($att_id, $tag);
     return $image_arr[0];
 }
 

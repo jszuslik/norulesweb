@@ -10,18 +10,18 @@ jQuery(document).ready(function($){
     var meta_image_frame;
 
     // Runs when the image button is clicked.
-    $('.nrw_button').click(function(e){
-        var sib = $(this).siblings("input");
-        console.log(sib[0]);
-
+    $('.nrw_button').on('click', function(e){
+        var input = $(this);
+        var sib = input.siblings("input");
+        console.log(sib);
         // Prevents the default action from occuring.
         e.preventDefault();
 
         // If the frame already exists, re-open it.
-        if ( meta_image_frame ) {
-            meta_image_frame.open();
-            return;
-        }
+        // if ( meta_image_frame ) {
+        //     meta_image_frame.open();
+        //     return;
+        // }
 
         // Sets up the media library frame
         meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
@@ -43,4 +43,5 @@ jQuery(document).ready(function($){
         // Opens the media library frame.
         meta_image_frame.open();
     });
+
 });

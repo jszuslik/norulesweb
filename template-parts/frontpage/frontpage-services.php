@@ -9,17 +9,26 @@
                 <div class="col-xs-6 js__masonry-sizer"></div>
                 <div class="col-xs-6 g-full-width--xs g-margin-b-10--xs g-margin-b-0--sm js__masonry-item">
                     <div class="wow fadeInDown" data-wow-duration=".3" data-wow-delay=".1s">
-                        <img class="img-responsive" src="wp-content/uploads/2017/04/code_400x550.jpg" alt="Image">
+                        <?php
+                            $image_1 = nrw_return_img_url(get_post_meta($post->ID, 'nrw_meta_image_1', true), NRW_THUMB_SER_LEFT);
+                        ?>
+                        <img class="img-responsive" src="<?php echo $image_1; ?>" alt="Image">
                     </div>
                 </div>
                 <div class="col-xs-6 g-full-width--xs g-margin-b-10--xs js__masonry-item">
                     <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".3s">
-                        <img class="img-responsive" src="wp-content/uploads/2017/04/web_design_ux_970x647.jpg" alt="Image">
+                        <?php
+                            $image_2 = nrw_return_img_url(get_post_meta($post->ID, 'nrw_meta_image_2', true), NRW_THUMB_SER_RIGHT);
+                        ?>
+                        <img class="img-responsive" src="<?php echo $image_2; ?>" alt="Image">
                     </div>
                 </div>
                 <div class="col-xs-6 g-full-width--xs js__masonry-item">
                     <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".5s">
-                        <img class="img-responsive" src="wp-content/uploads/2017/04/analytics_970x647.jpg" alt="Image">
+                        <?php
+                        $image_3 = nrw_return_img_url(get_post_meta($post->ID, 'nrw_meta_image_3', true), NRW_THUMB_SER_RIGHT);
+                        ?>
+                        <img class="img-responsive" src="<?php echo $image_3; ?>" alt="Image">
                     </div>
                 </div>
             </div>
