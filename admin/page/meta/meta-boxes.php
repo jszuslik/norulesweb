@@ -7,9 +7,9 @@ class NrwPageMeta {
 
     public function __construct() {
         global $pagenow;
+        global $post;
+        p($post);
         if($pagenow == 'post.php') {
-            $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-            $post = get_post($post_id);
             if($post->post_name == 'home'){
                 add_action('add_meta_boxes', array( $this, 'nrw_home_page_meta' ) );
             } else {
