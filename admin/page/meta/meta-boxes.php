@@ -7,25 +7,26 @@ class NrwPageMeta {
 
     public function __construct() {
         global $pagenow;
-        global $post;
-        // p($post);
         if($pagenow == 'post.php') {
-            if($post['post_name'] == 'home'){
-                add_action('add_meta_boxes', array( $this, 'nrw_home_page_meta' ) );
-            } else {
-                add_action('add_meta_boxes', array( $this, 'nrw_page_meta' ) );
-            }
+            add_action('add_meta_boxes', array( $this, 'nrw_home_page_meta' ) );
+            add_action('add_meta_boxes', array( $this, 'nrw_page_meta' ) );
             add_action('save_post', array( $this, 'nrw_save_page_meta' ) );
             add_action('admin_print_styles', array( $this, 'nrw_meta_image_enqueue'));
         }
     }
 
     public function nrw_home_page_meta() {
-        add_meta_box( 'nrw_home_page_meta', __( 'Funnel Settings', NRW_TEXT_DOMAIN), array($this, 'nrw_home_page_meta_callback'), array('page'));
+        global $post;
+        if($post->post_name == 'home') {
+            add_meta_box( 'nrw_home_page_meta', __( 'Funnel Settings', NRW_TEXT_DOMAIN), array($this, 'nrw_home_page_meta_callback'), array('page'));
+        }
     }
 
     public function nrw_page_meta() {
-        add_meta_box( 'nrw_page_meta', __( 'Funnel Settings', NRW_TEXT_DOMAIN), array($this, 'nrw_page_meta_callback'), array('page'));
+        global $post;
+        if($post->post_name != 'home') {
+            add_meta_box('nrw_page_meta', __('Funnel Settings', NRW_TEXT_DOMAIN), array($this, 'nrw_page_meta_callback'), array('page'));
+        }
     }
 
     public function nrw_home_page_meta_callback( $post ) {
@@ -95,7 +96,9 @@ class NrwPageMeta {
             $name = $field['name'];
             $id = $field['id'];
             $label = $field['label'];
-            $btn_id = $field['btn_id'];
+            $btn_id = null;
+            if(isset($field['btn_id']))
+                $btn_id = $field['btn_id'];
             if(isset($meta_fields[$name]))
                 $value = $meta_fields[$name];
             $description = $field['description'];
