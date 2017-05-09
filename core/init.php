@@ -18,6 +18,7 @@ if ( function_exists('nrw_require_file') ) {
     nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-meta-object.php' );
     nrw_require_file( NRW_CORE_FUNCTIONS . 'seo/nrw-seo-adding-functions.php' );
     nrw_require_file( NRW_CORE_ADMIN . 'page/meta/meta-boxes.php' );
+	nrw_require_file( NRW_CORE_ADMIN . 'customizer/theme-options/nrw-theme-options-settings.php' );
 
     // Load Widgets
     nrw_require_file( NRW_CORE_WIDGETS . 'nrw-about-widget.php' );
