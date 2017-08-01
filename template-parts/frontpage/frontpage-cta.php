@@ -2,10 +2,11 @@
 
 ?>
 <!--========== PROMO BLOCK ==========-->
-<div class="s-promo-block-v1 g-bg-color--dark-light">
+<div class="s-promo-block-v1 g-bg-color--dark-light cf">
     <div class="container g-padding-y-100--xs">
         <div class="row g-margin-t-30--xs g-margin-t-20--sm">
-            <div class="col-lg-6 col-md-6 col-sm-12 g-hor-centered-row__col g-text-center--xs g-text-left--md g-margin-b-60--xs g-margin-b-0--md">
+            <div class="col-lg-6 col-md-6 col-sm-12 g-hor-centered-row__col g-text-center--xs g-text-left--md
+            g-margin-b-60--xs g-margin-b-0--md">
                 <div class="s-promo-block-v1__square-effect g-margin-b-60--xs">
                     <h1 class="g-font-size-32--xs g-font-size-45--sm g-font-size-50--lg g-color--white"><?php echo get_bloginfo('description'); ?></h1>
                     <p class="g-font-size-20--xs g-font-size-20--md g-color--white g-margin-b-0--xs">

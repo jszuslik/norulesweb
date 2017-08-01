@@ -22,3 +22,21 @@
 .colored-rule-center {
   margin: 0 auto;
 }
+.half-padding {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+.cf {
+  overflow: hidden;
+}
+
+.cf:before,
+.cf:after {
+  content:"";
+  display:table;
+  line-height:0;
+}
+.cf:after {
+  clear: both;
+}

@@ -1,6 +1,6 @@
 <?php ?>
 <!-- Feedback Form -->
-<div class="g-bg-color--sky-light">
+<div class="g-bg-color--sky-light cf">
     <div class="container g-padding-y-80--xs g-padding-y-125--sm">
         <div class="g-text-center--xs g-margin-b-80--xs">
             <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Feedback</p>

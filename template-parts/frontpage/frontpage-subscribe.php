@@ -1,6 +1,6 @@
 <?php ?>
 <!-- Subscribe -->
-<div class="js__parallax-window" style="background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/milwaukee_bw_1920x1080.jpg') 50% 0 no-repeat fixed;">
+<div class="js__parallax-window cf" style="background: url('http://newsite.norulesweb.com/wp-content/uploads/2017/04/milwaukee_bw_1920x1080.jpg') 50% 0 no-repeat fixed;">
     <div class="overlay-grid" style="position: relative; top: 0; width: 100%; height: 100%; background: rgba(3, 77, 161, 0.5);">
         <div class="g-container--sm g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
             <div class="g-margin-b-80--xs">

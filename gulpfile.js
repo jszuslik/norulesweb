@@ -12,7 +12,7 @@ var gulp 		= require('gulp'),
     rename 		= require('gulp-rename'),
     uglify 		= require('gulp-uglify'),
     pump 		= require('pump');
-var devDomain = 'norulesweb.dev';
+var devDomain = 'nrw.dev';
 var browserSync = require('browser-sync').create();
 
 

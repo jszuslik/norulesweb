@@ -94,8 +94,6 @@ p {
   @include font($size: $font-size-15, $weight: 300);
 	color: $color-text;
 	line-height: $line-height;
-	margin-top: 0;
-	margin-bottom: 1rem;
 }
 
 /* Links */

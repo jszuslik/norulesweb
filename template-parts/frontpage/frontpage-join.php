@@ -1,6 +1,6 @@
 <?php ?>
 <!-- Process -->
-<div class="g-bg-color--primary-ltr">
+<div class="g-bg-color--primary-ltr cf">
     <div class="container g-padding-y-80--xs g-padding-y-125--sm">
         <div class="g-text-center--xs g-margin-b-100--xs">
             <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">Process</p>

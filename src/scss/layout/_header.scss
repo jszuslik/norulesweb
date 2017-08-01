@@ -1,7 +1,6 @@
 /*----------------------------------
   Header
 ------------------------------------*/
-
 .s-header__navbar {
 	background: transparent;
 	@include cubic-transition($delay: 0, $duration: 300ms, $property: (all));

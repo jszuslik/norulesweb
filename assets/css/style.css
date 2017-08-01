@@ -133,8 +133,6 @@ p {
   font-weight: 300;
   color: #656565;
   line-height: 1.6;
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 /* Links */
@@ -2027,12 +2025,12 @@ fieldset[disabled] .s-btn {
 /*----------------------------------
   Footer
 ------------------------------------*/
-.s-footer__logo {
+.s-world__logo {
   position: relative;
   z-index: 1;
 }
 
-.s-footer__logo:before {
+.s-world__logo:before {
   position: absolute;
   top: 0;
   left: 0.9375rem;
@@ -2040,9 +2038,52 @@ fieldset[disabled] .s-btn {
   width: 70%;
   height: auto;
   z-index: -1;
-  background: url("http://norulesweb.dev/wp-content/uploads/2017/04/worldmap.png") no-repeat center center;
+  background: url("/wp-content/uploads/2017/04/worldmap.png") no-repeat center center;
   background-size: cover;
   content: " ";
+}
+
+.s-footer__logo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  float: left;
+}
+
+.s-footer__logo-link {
+  display: inline-block;
+  padding: 1rem 0;
+}
+
+.s-footer__logo-link:focus, .s-footer__logo-link:hover {
+  text-decoration: none;
+}
+
+.s-footer__logo-img-default, .s-footer__logo-img-shrink {
+  display: block;
+  transition-duration: 300ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+}
+
+.s-footer__logo-img-default {
+  opacity: 1;
+}
+
+.s-footer__logo-img-shrink {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  opacity: 0;
+}
+
+@media (max-width: 61.9em) {
+  .s-footer__logo {
+    width: auto;
+    height: auto;
+    float: left;
+  }
 }
 
 /*----------------------------------
@@ -2401,4 +2442,24 @@ fieldset[disabled] .s-btn {
 
 .colored-rule-center {
   margin: 0 auto;
+}
+
+.half-padding {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+.cf {
+  overflow: hidden;
+}
+
+.cf:before,
+.cf:after {
+  content: "";
+  display: table;
+  line-height: 0;
+}
+
+.cf:after {
+  clear: both;
 }

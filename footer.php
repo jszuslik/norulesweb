@@ -5,7 +5,7 @@
 
 <?php get_template_part('template-parts/frontpage/frontpage', 'feedback'); ?>
 
-<footer class="g-bg-color--dark">
+<footer class="g-bg-color--dark cf">
     <!-- Links -->
     <div class="g-hor-divider__dashed--white-opacity-lightest">
         <div class="container g-padding-y-80--xs">
@@ -33,7 +33,8 @@
                         <li><a class="g-font-size-15--xs g-color--white-opacity" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Terms &amp; Conditions</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 s-footer__logo g-padding-y-50--xs g-padding-y-0--md">
+                <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 s-world__logo g-padding-y-50--xs
+                g-padding-y-0--md">
                     <h3 class="g-font-size-18--xs g-color--white">Megakit</h3>
                     <p class="g-color--white-opacity">We are a creative studio focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and simplicity.</p>
                 </div>
@@ -47,7 +48,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <a href="index.html">
-                    <div class="s-header__logo">
+                    <div class="s-footer__logo">
                         <?php nrw_logo(); ?>
                     </div>
                 </a>

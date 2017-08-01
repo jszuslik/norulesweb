@@ -2,7 +2,7 @@
   Footer
 ------------------------------------*/
 
-.s-footer__logo {
+.s-world__logo {
 	@include position(relative);
 	z-index: 1;
 
@@ -10,8 +10,45 @@
 		@include position(absolute, $top: 0, $left: .9375rem, $bottom: 0);
 		@include size(70%, auto);
 		z-index: -1;
-		background: url('http://norulesweb.dev/wp-content/uploads/2017/04/worldmap.png') no-repeat center center;
+		background: url('/wp-content/uploads/2017/04/worldmap.png') no-repeat center center;
 		background-size: cover;
 		content: " ";
+	}
+}
+.s-footer__logo {
+	@include position(relative);
+	z-index: 1;
+	@include size(100%, auto);
+	float: left;
+
+	&-link {
+		display: inline-block;
+		padding: 1rem 0;
+
+		@include hover-focus {
+			text-decoration: none;
+		}
+	}
+
+	&-img {
+		&-default,
+		&-shrink {
+			display: block;
+			@include cubic-transition($delay: 0, $duration: 300ms, $property: (all));
+		}
+
+		&-default {
+			opacity: 1;
+		}
+
+		&-shrink {
+			@include position(absolute, $top: 1rem, $left: 0);
+			opacity: 0;
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		@include size(auto);
+		float: left;
 	}
 }
