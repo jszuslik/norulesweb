@@ -65,7 +65,7 @@
         </ul>
 
         <div class="g-text-center--xs">
-            <a href="#js__scroll-to-appointment" class="text-uppercase s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-70--xs">Hire Us</a>
+            <a href="/contact/" class="text-uppercase s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-70--xs">Hire Us</a>
         </div>
     </div>
 </div>
